@@ -15,21 +15,21 @@ public class Tarefa6 {
 	double p1;
 	double p2;
 	
-	System.out.print("Digite o valor de x1 : ");
+	System.out.print("Informe o valor de x1: ");
 	x1 = leia.nextDouble();
 	
-	System.out.print("Digite o valor de x1 : ");
+	System.out.print("Informe o valor de x2: ");
 	x2 = leia.nextDouble();
 	
-	System.out.print("Digite o valor de y1 : ");
+	System.out.print("Informe o valor de y1: ");
 	y1 = leia.nextDouble();
 	
-	System.out.print("Digite o valor de y2 : ");
+	System.out.print("Informe o valor de y2: ");
 	y2 = leia.nextDouble();
 	
 	d = Math.sqrt((Math.pow((x2-x1),2) + Math.pow((y2-y1),2)));
 	
-	System.out.printf("\nA tal da distância é %.2f ",d);
+	System.out.printf("\nA distância entre os pontos é  %.2f ",d);
 	
 	leia.close();
 	}
