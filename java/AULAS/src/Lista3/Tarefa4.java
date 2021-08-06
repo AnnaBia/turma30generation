@@ -3,20 +3,19 @@ package Lista3;
 import java.util.Scanner;
 
 public class Tarefa4 {
-	/*
-	 	Uma empresa desenvolveu uma pesquisa para saber as características psicológicas dos indivíduos de uma região. Para tanto, a cada uma das pessoas era perguntado: 
-	 	idade, sexo (1-feminino / 2-masculino / 3-Outros), e as opções (1, se a pessoa era calma; 2, se a pessoa era nervosa e 3, se a pessoa era agressiva). Pede-se
-	 	 para elaborar um sistema que permita ler os dados de 150 pessoas, calcule e mostre: (WHILE)
-		•	o número de pessoas calmas; 
-		•	o número de mulheres nervosas; 
-		•	o número de homens agressivos; 
-		•	o número de outros calmos;
-		•	o número de pessoas nervosas com mais de 40 anos; 
-		•	o número de pessoas calmas com menos de 18 anos.
-	 */
-	//VARIAVEIS
+				/*
+			 	Uma empresa desenvolveu uma pesquisa para saber as características psicológicas dos indivíduos de uma região. Para tanto, a cada uma das pessoas era perguntado: 
+			 	idade, sexo (1-feminino / 2-masculino / 3-Outros), e as opções (1, se a pessoa era calma; 2, se a pessoa era nervosa e 3, se a pessoa era agressiva). Pede-se
+			 	 para elaborar um sistema que permita ler os dados de 150 pessoas, calcule e mostre: (WHILE)
+				•	o número de pessoas calmas; 
+				•	o número de mulheres nervosas; 
+				•	o número de homens agressivos; 
+				•	o número de outros calmos;
+				•	o número de pessoas nervosas com mais de 40 anos; 
+				•	o número de pessoas calmas com menos de 18 anos.
+			 */
 			Scanner leia = new Scanner(System.in);
-			int idade;
+			int idade=0;
 			char sexo;  //(1-feminino / 2-masculino / 3-Outros)
 			char opcoes; //(1, pessoa calma; 2 pessoa nervosa; 3 pessoa agressiva).
 			int contadorPessoas=0;
@@ -30,7 +29,6 @@ public class Tarefa4 {
 			int numeroPessoasNervosasMais40Anos=0;
 			int numeroPessoasCalmasMenos18Anos=0;
 
-			//ENTRADAS
 			while(contadorPessoas < LIMITE_PESSOAS_ENTREVISTADAS && op=='S') {
 			
 				System.out.print("Digite a idade : ");
@@ -68,11 +66,11 @@ public class Tarefa4 {
 				}
 				
 			}
-			System.out.println("Pessoas calmas "+numeroPessoasCalmas); 
-			System.out.println("Mulheres nervosas "+numeroMulheresNervosas); 
-			System.out.println("Homens agressivos "+numeroHomensAgressivos); 
-			System.out.println("Outros calmos "+numeroOutrosCalmos);
-			System.out.println("Pessoas nervosas acima 40 anos "+numeroPessoasNervosasMais40Anos); 
-			System.out.println("Pessoas acalmas abaixo 18 anos "+numeroPessoasCalmasMenos18Anos);
+			System.out.print("Pessoas calmas " + numeroPessoasCalmas); 
+			System.out.print("Mulheres nervosas " + numeroMulheresNervosas); 
+			System.out.print("Homens agressivos " + numeroHomensAgressivos); 
+			System.out.print("Outros calmos " + numeroOutrosCalmos);
+			System.out.print("Pessoas nervosas acima 40 anos " + numeroPessoasNervosasMais40Anos); 
+			System.out.print("Pessoas acalmas abaixo 18 anos " + numeroPessoasCalmasMenos18Anos);
 	}
 }
