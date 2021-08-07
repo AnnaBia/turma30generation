@@ -51,7 +51,7 @@ public class CadAluno {
 		}
 
 		for (int x = 0; x < alunes.length; x++) {
-			System.out.printf("MATRICULA : %s \tALUNE : %s \t\t NOTA : %d SITUACAO ", matriculas[x], alunes[x], notas[x]);
+			System.out.printf("MATRICULA : %s \tALUNE : %s \t\t SITUACAO ", matriculas[x], alunes[x]);
 			if (ativo[x] == true) {
 				System.out.print(" ATIVO \n");
 			} else {
