@@ -26,7 +26,7 @@ public class produto {
 		}
 	}
 	//encapsulamento
-	//generate get end setteres
+	//botao direito - source - generate geteers end setteers
 	public String getCodigo() {
 		return codigo;
 	}
@@ -53,7 +53,7 @@ public class produto {
 	}
 	
 	public void incluiEstoque(int quantidade) {
-		//this não é obrigatorio, pois não tem outra variavel alem dessa
+		//this não é obrigatorio neste campo, pois não tem outra variavel alem dessa
 		if(quantidade <= 0) {
 			System.out.println("Quantidade incorreta!");
 		}
@@ -73,7 +73,7 @@ public class produto {
 
 	}
 }
-//extends=  
+
 	
 	
 	

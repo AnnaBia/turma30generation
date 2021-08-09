@@ -5,7 +5,11 @@ public class Funcionario {
 	private double salario;
 	private String nome;
 	
-	//get e set
+	public Funcionario(String nome, int matricula, String departamento) {
+		// TODO Auto-generated constructor stub
+	}
+	//encapsulamento
+	//get e set (chama uma informação para depois usa-la
 	public double getSalario() {
 		return salario;
 	}
