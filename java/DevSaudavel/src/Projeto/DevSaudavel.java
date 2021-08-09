@@ -1,6 +1,5 @@
 package Projeto;
 
-
 	import java.time.LocalDateTime;
 	import java.time.format.DateTimeFormatter;
 	import java.util.Scanner;
@@ -46,23 +45,19 @@ package Projeto;
 				estoque[contador] = 10;	
 			}
 			//Entrada para o site
-			insereBanner();
 			do{
-				
-				System.out.print("\nDeseja entrar no site [S/N] ? : ");
-				desejaEntraNoSite = ler.next().toUpperCase().charAt(0);
-				if(desejaEntraNoSite != 's' && desejaEntraNoSite !='n') {
-					System.out.print("INformDigite novamente : ");
+				insereBanner(); //Maic
+				do{
+					System.out.print("\nDeseja entrar no site [S/N] ? : ");
 					desejaEntraNoSite = ler.next().toUpperCase().charAt(0);
-				}
-				
+				}while(desejaEntraNoSite != 'S' && desejaEntraNoSite != 'N');
 				//Tabela de código, produtos, preços e estoque
 				if(desejaEntraNoSite == 'S' || desejaEntraNoSite == 's'){
-					//FUNCAO tituloTabela() /Maic
+					tituloTabela(); //Maic
 					for(contador = 0 ; contador < 10 ; contador++){
 						System.out.print("\n\t♥     "+codProduto[contador]+" \t♥\t"+ produto[contador]+"\t♥\t"+ preco[contador]+"\t   ♥\t  "+estoque[contador]+"\t   ♥");
 					}//for
-					//FUNCAO linha(verdadeiro) /Maic
+					linha(true); //Maic
 	//Fim VINICIUS 
 	//Início ANA 
 						do {
@@ -76,11 +71,11 @@ package Projeto;
 									//Caso cliente deseja escolher outro produto que não esteja no carrinho
 									if(continua == 'S') {
 										auxQuant = 0;
-										//FUNCAO tituloTabela() /Maic									
+										tituloTabela(); //Maic									
 										for(contador = 0;contador < 10;contador++) {
 											System.out.print("\t♥     "+codProduto[contador]+" \t♥\t"+ produto[contador]+"\t♥\t"+ preco[contador]+"\t   ♥\t  "+estoque[contador]+"\t   ♥\n");
 										}
-										//FUNCAO linha(verdadeiro) /Maic
+										linha(true); //Maic
 										System.out.print("\nSelecione o código do produto : ");
 										auxCod = ler.next().toUpperCase();
 										contador = 0;
@@ -105,7 +100,7 @@ package Projeto;
 							 		}
 							 		//Quantidade inexistente no estoque
 							 		if (auxQuant > estoque[contador] && estoque[contador] == 0) {
-							 			System.out.print("Produto em falta !Digite ' 0 'para prosseguir ");
+							 			System.out.print("Produto em falta! Digite ' 0 'para prosseguir ");
 							 			while (auxQuant > estoque[contador]) {
 							 			auxQuant = ler.nextInt();	
 							 			}
@@ -124,41 +119,40 @@ package Projeto;
 					 			for (contador = 0; contador < 10; contador++) {
 					 				if (auxCod.equals(codProduto[contador])) {
 					 				carrinhoCompras[contador] = auxQuant;
-					 				//FUNCAO tituloCarrinho() /Maic
+					 				tituloCarrinho(); //Maic
 					 					for (contador = 0; contador < 10; contador++) {
 					 						if(carrinhoCompras[contador] != 0) {
 					 							System.out.print("♥     "+codProduto[contador]+" \t♥\t"+produto[contador]+"\t♥\t"+preco[contador]+"\t   ♥\t  "+carrinhoCompras[contador]+"\t♥\t"+(carrinhoCompras[contador]*preco[contador])+"\t    ♥\n");			
 					 						}
 					 					}
-					 				//FUNCAO linha(falso) /Maic
+					 				linha(false); //Maic
 					 				}
 					 			}
 						 		//Após adicionar o produto no carrinho, é perguntado novamente
-						 		System.out.print("\nDeseja continuar a compra [S/N] ?: ");
-						 		continua = ler.next().toUpperCase().charAt(0);
-						 		//FUNCAO tituloTabela() /Maic
-						 		do {
-							 		System.out.print("Valor inválido, digite novamente: ");
-							 		continua = ler.next().toUpperCase().charAt(0);
-							 		}while (continua != 's');
+						 		do{
+						 			System.out.print("\nDeseja continuar a compra [S/N] ?: ");
+						 			continua = ler.next().toUpperCase().charAt(0);
+						 		}while(continua != 'S' && continua != 'N');
+						 		
+						 		tituloTabela(); //Maic
 						 		for (contador = 0 ; contador < 10 ; contador++) {
 						 			if (continua == 'S') {
 					 				System.out.print("\n\t♥     "+codProduto[contador]+" \t♥\t"+produto[contador]+"\t♥\t"+preco[contador]+"\t   ♥\t  "+estoque[contador]+"\t   ♥");
 						 			}
 						 		}
-					 		//FUNCAO linha(verdadeiro) /Maic	
+					 		linha(true); //Maic	
 						}while (continua == 'S');
 	//Fim HENRIQUE 
 	//Início GIOVANNA 
 						//Compra finalizada - Carrinho final 
-						//FUNCAO tituloCarrinho() /Maic
+						tituloCarrinho(); //Maic
 						for (contador = 0; contador < 10; contador++) {
 							if (carrinhoCompras[contador] != 0) {
 								System.out.printf("♥     "+codProduto[contador]+" \t♥\t"+produto[contador]+"\t♥\t"+preco[contador]+"\t   ♥\t  "+carrinhoCompras[contador]+"\t♥\t"+(carrinhoCompras[contador] * preco[contador])+"\t    ♥\n");
 								total += carrinhoCompras[contador] * preco[contador];
 							}
 						}
-						//FUNCAO linha(falso) /Maic
+						linha(false); //Maic
 						System.out.printf("\nVALOR DA COMPRA : %.2f",total);
 						System.out.println("\n\nFORMAS DE PAGAMENTO : ");
 						System.out.println("Opção [1] - Dinheiro á vista c/ 10% de desconto");
@@ -166,7 +160,7 @@ package Projeto;
 						System.out.println("Opção [3] - Cartão em 2x c/ 15% de acréscimo");
 						System.out.print("\nDigite a opção de pagamento : ");
 						opcao = ler.nextInt();
-						//FUNCAO linhaNota(verdadeiro) /Maic					
+						linhaNota(true); //Maic					
 						//Opções de Pagamento
 						while (opcao >3 || opcao <=0) {
 							System.out.println("Opção inválida, escolha novamente: ");
@@ -188,9 +182,8 @@ package Projeto;
 							System.out.println("9% de ICMS : R$ "+df.format(total * 0.09));
 							System.out.println("10% de desconto : R$ "+df.format(total * 0.1));
 							System.out.println("\nTOTAL DA COMPRA R$ "+df.format(total * 0.9)+"\n");
-							System.out.println("\n\t\t\t\t\t\tData de emissão : "+formatterData.format(agora)+"\t");
-							System.out.print("    Hora : "+formatterHora.format(agora));
-							//FUNCAO linhaNota(falso) /Maic
+							System.out.print("\n\t\t\t\t\tData de emissão : "+formatterData.format(agora)+"\t    Hora : "+formatterHora.format(agora));
+							linhaNota(false); //Maic
 						}
 						//Opção 2 - à vista cartão
 						if (opcao == 2) {
@@ -203,9 +196,8 @@ package Projeto;
 							System.out.println("9% de ICMS : R$ "+df.format(total * 0.09));
 							System.out.println("10% de acréscimo : R$ "+df.format(total * 0.1));
 							System.out.println("\nTOTAL DA COMPRA R$ "+df.format(total * 1.1)+"\n");
-							System.out.print("\n\t\t\t\t\t\tData de emissão : "+formatterData.format(agora)+"\t");
-							System.out.print("    Hora : "+formatterHora.format(agora));
-							//FUNCAO linhaNota(falso) /Maic
+							System.out.print("\n\t\t\t\t\tData de emissão : "+formatterData.format(agora)+"\t    Hora : "+formatterHora.format(agora));
+							linhaNota(false); //Maic
 						}	
 						//Opção 3 - em 2X no cartão
 						else if (opcao == 3) {
@@ -219,9 +211,8 @@ package Projeto;
 							System.out.println("15% de acréscimo : R$ "+df.format(total * 0.15));
 							System.out.println("Valor da parcela : R$ "+df.format((total * 1.15)/2)+"\n");
 							System.out.println("\nTOTAL DA COMPRA R$ " +df.format(total * 1.15)+"\n");
-							System.out.print("\n\t\t\t\t\t\tData de emissão : "+formatterData.format(agora)+"\t");
-							System.out.print("    Hora : "+formatterHora.format(agora));
-							//FUNCAO linhaNota(false) /Maic
+							System.out.print("\n\t\t\t\t\tData de emissão : "+formatterData.format(agora)+"\t    Hora : "+formatterHora.format(agora));
+							linhaNota(false); //Maic
 						}					
 						//Zerando carrinho para nova compra
 						auxQuant=0;				
@@ -236,18 +227,16 @@ package Projeto;
 							carrinhoCompras[contador] = 0;		
 							total = 0.0;
 						}
-				}
-			
-				
+					}
 				else {
-					
 					break;
 				}
-				
-				System.out.print("\nDeseja retornar ao site [S/N]: ");
-				desejaVoltarParaSite = ler.next().toUpperCase().charAt(0);	
+				do{
+					System.out.print("\nDeseja continuar a compra [S/N] ?: ");
+					desejaVoltarParaSite = ler.next().toUpperCase().charAt(0);	
+		 		}while(continua != 'S' && continua != 'N');
 			}while (desejaVoltarParaSite == 'S');
-			System.out.println("Agradecemos a visita ♥\nVolteSempre !!!\n");
+			System.out.println("Agradecemos a visita ♥\nVolte Sempre !!!\n");
 		}//void main
 	//Fim GIOVANNA
 		
@@ -256,29 +245,29 @@ package Projeto;
 		//Cabeçalho do site
 		public static void insereBanner() {
 			System.out.println("www.devsaudavel.com.br || versão 2.0\n");
-			System.out.println("\t\t\t\t*****DEV SAUDÁVEL*****\n");
-			System.out.println("\t\t\t\tProgramando a sua saúde\n");
+			System.out.println("\t\t\t\t*****DEV SAUDÁVEL*****");
+			System.out.println("\t\t\t\tProgramando a sua saúde");
 		}
 
 		//Cabeçalho da tabela
 		public static void tituloTabela() {
-			System.out.println("\t♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥");
+			System.out.println("\n\t♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥");
 			System.out.println("\t♥\t\t\t    TABELA DE PRODUTOS\t\t\t\t   ♥");
 			System.out.println("\t════════════════════════════════════════════════════════════════════════════ ");
-			System.out.println("\t♥    CÓDIGO\t♥\t PRODUTO\t♥    VALOR (R$)    ♥    ESTOQUE    ♥\n");
+			System.out.println("\t♥    CÓDIGO\t♥\t PRODUTO\t♥    VALOR (R$)    ♥    ESTOQUE    ♥");
 		}
 
 		//Cabeçalho do carrinho
 		public static void tituloCarrinho() {
-			System.out.println("═════════════════════════════════════════════════════════════════════════════════════════════");
+			System.out.println("\n═════════════════════════════════════════════════════════════════════════════════════════════");
 			System.out.println("♥\t\t\t\t  CARRINHO DE COMPRAS\t\t\t\t\t    ♥");
-			System.out.println("♥    CÓDIGO\t♥\t PRODUTO\t♥    VALOR (R$)    ♥    QTDD    ♥     TOTAL (R$)    ♥");
+			System.out.println("\n♥    CÓDIGO\t♥\t PRODUTO\t♥    VALOR (R$)    ♥    QTDD    ♥     TOTAL (R$)    ♥");
 		}
 		
 		//Linha divisão 
 		public static void linha(boolean forte){
 			if(forte){
-				System.out.println("\t════════════════════════════════════════════════════════════════════════════");
+				System.out.println("\n\t════════════════════════════════════════════════════════════════════════════");
 			}
 			else {
 				System.out.println("═════════════════════════════════════════════════════════════════════════════════════════════");
@@ -289,9 +278,9 @@ package Projeto;
 		public static void linhaNota (boolean forte){
 			if (forte){
 				System.out.println("======================================= NOTA FISCAL =========================================\n");
-				System.out.println("www.devsaudavel.com.br || versão 2.0");
-				System.out.println("\t\t\t\t  *****DEV SAUDÁVEL*****");
-				System.out.println("\t\t\t\t  Programando a sua saúde");
+				System.out.println("\nwww.devsaudavel.com.br || versão 2.0\n");
+				System.out.println("\t\t\t\t  *****DEV SAUDÁVEL*****\n");
+				System.out.println("\t\t\t\t  Programando a sua saúde\n");
 				System.out.println("\n\n♥    CÓDIGO\t♥\t PRODUTO\t♥    VALOR (R$)    ♥    QTDD    ♥     TOTAL (R$)    ♥\n");
 			}
 			else {
