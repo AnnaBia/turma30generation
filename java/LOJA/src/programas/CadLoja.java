@@ -1,27 +1,22 @@
 package programas;
 
-import entidades.produto;
+import entidades.Produto;
 
 public class CadLoja {
 
 	public static void main(String[] args) {
-		produto prod1 = new produto("001","CAMISETA");
-		produto prod2 = new produto("002","CALÇA",100.50,-1);
-		
-		//prod1.setNome("CAMISETA");
-
-		
-		//System.out.println(prod2.getValor()*2);
-		//System.out.println(prod2.getEstoque());
-		
+	
+		Produto prod1 = new Produto("001","CAMISA");
+		Produto prod2 = new Produto("002","CALÇA",100.50,-1);
+			
 		prod2.retiraEstoque(5);
 		prod1.incluiEstoque(-1);
-		prod1.retiraEstoque(1);
-		System.out.println(prod1.getEstoque());
-		System.out.println(prod2.getEstoque());
-		
-		
-
+		System.out.println(prod1.getNome()+" qtde "+prod1.getEstoque());
+		System.out.println(prod2.getNome()+" qtde "+prod2.getEstoque());
+		prod2.retiraEstoque(2);
+		System.out.println(prod2.getNome()+" qtde "+prod2.getEstoque());
+		prod2.retiraEstoque(5);
+		System.out.println(prod2.getNome()+" qtde "+prod2.getEstoque());
 	}
 
 }

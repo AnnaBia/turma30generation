@@ -5,7 +5,7 @@ public class Funcionario {
 	private double salario;
 	private String nome;
 	
-	public Funcionario(String nome, int matricula, String departamento) {
+	public Funcionario(String nome, double salario) {
 		// TODO Auto-generated constructor stub
 	}
 	//encapsulamento

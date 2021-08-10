@@ -1,76 +1,88 @@
 package entidades;
 
-public class produto {
+public class Produto {
 	//atributos - é, tem, estar
 	private String codigo;
 	private String nome;
 	private double valor;
 	private int estoque;
 	
-	//construtor possui o mesmo nome da classe
-	public produto(String codigo, String nome) {
-		super(); //botao direito do mouse - source - generate constructor using fields
-		this.codigo = codigo;
-		this.nome = nome;
+	
+	public Produto(String codigo, String nome) {
+	this.codigo = codigo;
+	this.nome = nome;
+		
 	}
-	public produto(String codigo, String nome, double valor, int estoque) {
-		super(); //botao direito do mouse - source - generate constructor using fields
+
+	public Produto(String codigo, String nome, double valor, int estoque) {
+		super();
 		this.codigo = codigo;
 		this.nome = nome;
 		this.valor = valor;
-		if(estoque < 0 ) {//impede que o estoque aceite numero negativo
+		if (estoque < 0) {
 			this.estoque = 0;
 		}
 		else {
 			this.estoque = estoque;
 		}
 	}
-	//encapsulamento
-	//botao direito - source - generate geteers end setteers
+
+	public Produto(String codigo) {
+		super();
+		this.codigo = codigo;
+	}
+
+	//ENCAPSULAMENTO - METODO
 	public String getCodigo() {
 		return codigo;
 	}
+
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public double getValor() {
 		return valor;
 	}
+
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
+
 	public int getEstoque() {
 		return estoque;
 	}
+	/*
 	public void setEstoque(int estoque) {
 		this.estoque = estoque;
 	}
+	*/
+
 	
+	//METODOS
 	public void incluiEstoque(int quantidade) {
-		//this não é obrigatorio neste campo, pois não tem outra variavel alem dessa
-		if(quantidade <= 0) {
-			System.out.println("Quantidade incorreta!");
-		}
-		else {
+		if (quantidade <= 0) {
+			System.out.println("Quantidade incorreta!!! Tente de novo!!!");
+		} else {
 			this.estoque = this.estoque + quantidade;
 		}
 		
 	}
+	
 	public void retiraEstoque(int quantidade) {
-		
-		if(quantidade > estoque) {
-			System.out.println("Quantidade indisponível");
+		if (quantidade > estoque) {
+			System.out.println("Quantidade indisponivel");
+		} else {
+			this.estoque = this.estoque - quantidade;
 		}
-		else {
-			this.estoque = this.estoque - quantidade;	
-		}
-
 	}
 }
 
