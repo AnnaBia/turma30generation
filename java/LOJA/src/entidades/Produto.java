@@ -1,6 +1,6 @@
 package entidades;
-
-public class Produto {
+		//não é possivel instanciar a class no programa
+public abstract class Produto {
 	//atributos - é, tem, estar
 	private String codigo;
 	private String nome;

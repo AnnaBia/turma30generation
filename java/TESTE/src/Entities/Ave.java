@@ -3,6 +3,7 @@ package Entities;
 public class Ave extends Pet{
 	
 	public Ave(String raca, int anoNascimento) {
+		//super chama o atributo
 		super(raca, anoNascimento);
 	}
 	private boolean voa;

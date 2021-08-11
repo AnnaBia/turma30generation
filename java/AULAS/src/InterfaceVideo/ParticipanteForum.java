@@ -1,7 +1,9 @@
-package Interface;
+package InterfaceVideo;
 											//interfaces
 public class ParticipanteForum implements Leitor,Programador{
+	//atributo
 	String pensamento;
+	
 	public String lendo() {
 		return "Forum";
 	}
@@ -11,7 +13,7 @@ public class ParticipanteForum implements Leitor,Programador{
 	public String digitando() {
 		return pensamento;
 	}
-	public String aprendendo() {
+	private String aprendendo() {
 		return "JAVA";
 	}
 }
