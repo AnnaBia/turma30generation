@@ -82,8 +82,7 @@ package Projeto;
 										while(auxCod.equalsIgnoreCase(codProduto[contador])){
 											contador++;
 										}
-									}//Caso deseja modificar o produto existente no carrinho
-										
+									}//Caso deseja modificar o produto existente no carrinho		
 								}
 	//Fim ANA 
 	//Início HENRIQUE 
@@ -133,13 +132,17 @@ package Projeto;
 						 			System.out.print("\nDeseja continuar a compra [S/N] ?: ");
 						 			continua = ler.next().toUpperCase().charAt(0);
 						 		}while(continua != 'S' && continua != 'N');
-						 		
-						 		tituloTabela(); //Maic
-						 		for (contador = 0 ; contador < 10 ; contador++) {
-						 			if (continua == 'S') {
-					 				System.out.print("\n\t♥     "+codProduto[contador]+" \t♥\t"+produto[contador]+"\t♥\t"+preco[contador]+"\t   ♥\t  "+estoque[contador]+"\t   ♥");
-						 			}
+						 		if(continua == 'S') {
+						 			tituloTabela(); //Maic
+							 		for (contador = 0 ; contador < 10 ; contador++) {
+							 			if (continua == 'S') {
+						 				System.out.print("\n\t♥     "+codProduto[contador]+" \t♥\t"+produto[contador]+"\t♥\t"+preco[contador]+"\t   ♥\t  "+estoque[contador]+"\t   ♥");
+							 			}
+							 		}
+						 			
+						 			
 						 		}
+						 
 					 		linha(true); //Maic	
 						}while (continua == 'S');
 	//Fim HENRIQUE 

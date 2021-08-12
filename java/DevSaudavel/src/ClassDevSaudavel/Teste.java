@@ -13,7 +13,6 @@ public class Teste extends Funcoes {
 		String auxCod;
 		int contador = 0;
 		int auxQuant = 0;
-		
 
 		List<Produto> lista = new ArrayList<>();	
 		
@@ -29,10 +28,9 @@ public class Teste extends Funcoes {
 		lista.add(new Produto("G3-10","Corda P.",22.00,10));
 		
 		apresentaTabela(lista);
-		
-		
+
 			System.out.print("\nDigite o código do produto : ");
-			auxCod = ler.nextLine().toUpperCase();
+			auxCod = ler.next().toUpperCase();
 		
 			for(contador = 0;contador < lista.size();contador++) {
 				if(lista.get(contador).getCodProduto().equals(auxCod)) {
@@ -45,11 +43,18 @@ public class Teste extends Funcoes {
 					while (auxQuant<=0) {
 				 		System.out.print("Valor inválido, digite novamente: ");
 				 		auxQuant = ler.nextInt();
-				 		}
+				 	}
+					if (auxQuant > lista.get(contador).getEstoque()) {
+			 			while (auxQuant > lista.get(contador).getEstoque() && lista.get(contador).getEstoque() <= 0) {
+			 			System.out.print("\nDigite a quantidade mediante o estoque !");	
+			 			System.out.print("\n\nDigite a quantidade desejada : ");
+			 			auxQuant = ler.nextInt();
+			 			}
 	
 				}	
 			}	
-	}	
-}	
+		}	
+	}
+}
 		
 

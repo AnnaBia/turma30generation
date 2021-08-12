@@ -18,15 +18,15 @@ public class Funcoes {
 			insereBanner ();
 			return true;
 		} else {
-			System.out.print("\"Obrigado pela visita!!\n");
+			System.out.print("Obrigado pela visita!!\n");
+			System.exit(0);
 			return false;
 		}	
 		
 	}
 	// banner
 	public static void insereBanner () {
-		System.out.print("***** DEV SAUDÁVEL: PROGRAMANDO SUA SAÚDE *****\n\r");
-		System.out.print("---------------------------------------------------------\n");
+		
 		System.out.print("                  RELAÇÕES DE PRODUTOS                  \n");
 		System.out.print("---------------------------------------------------------\n");
 		System.out.print("COD      PRODUTO               VALOR R$       ESTOQUE\n");
