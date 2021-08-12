@@ -3,12 +3,10 @@ package ClassDevSaudavel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.List;
-import java.util.Scanner;
 
 public class Teste extends Funcoes {
 
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
 		Scanner ler = new Scanner(System.in);
 		String auxCod;
 		int contador = 0;
@@ -32,7 +30,7 @@ public class Teste extends Funcoes {
 		
 		
 			System.out.print("\nDigite o código do produto : ");
-			auxCod = ler.next().toUpperCase();
+			auxCod = ler.nextLine().toUpperCase();
 		
 			for(contador = 0;contador < lista.size();contador++) {
 				if(lista.get(contador).getCodProduto().equals(auxCod)) {

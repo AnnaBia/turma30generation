@@ -21,7 +21,7 @@ public class Carrinho extends Produto {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-    
+    /*
     public void verificarRepeticao(List<Produto> lista, int contador, int auxCod, ) {
     	for (contador = 0; contador < 10; contador++) {
 				if (auxCod.equals(codProduto(contador))) {
@@ -37,5 +37,6 @@ public class Carrinho extends Produto {
 			}
     	
     }
+    */
 
 }
