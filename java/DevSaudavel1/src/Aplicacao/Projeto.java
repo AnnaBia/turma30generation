@@ -1,11 +1,13 @@
-package POO;
+package Aplicacao;
 
 	import java.time.LocalDateTime;
 	import java.time.format.DateTimeFormatter;
 	import java.util.Scanner;
+	import Entidades.FuncoesExtras;
 	import java.text.DecimalFormat;
 
-	public class Teste {
+
+	public class Projeto extends FuncoesExtras{
 			/*
 			 * Projeto Ecommerce, loja de produtos saudáveis.
 			 * Programado por:
@@ -16,10 +18,6 @@ package POO;
 			 * Vinicius Cardoso Siqueira Francisco
 			 */
 		public static void main(String[] args) {
-			
-			Funcoes funcao = new Funcoes();
-			
-			
 	//Início VINICIUS 			        
 			DecimalFormat df = new DecimalFormat("#.00");//arredondamento do valor								
 			LocalDateTime agora = LocalDateTime.now();//data/hora atual
@@ -43,25 +41,25 @@ package POO;
 			char continua = ' ';
 			char desejaEntraNoSite = ' ';
 			char desejaVoltarParaSite = ' ';
-
+			
 			//Limita o estoque do produto até 10
 			for(contador = 0 ; contador < 10 ; contador++){
 				estoque[contador] = 10;	
 			}
 			//Entrada para o site
 			do{
-				funcao.insereBanner(); //Maic
+				insereBanner();
 				do{
 					System.out.print("\nDeseja entrar no site [S/N] ? : ");
 					desejaEntraNoSite = ler.next().toUpperCase().charAt(0);
 				}while(desejaEntraNoSite != 'S' && desejaEntraNoSite != 'N');
 				//Tabela de código, produtos, preços e estoque
 				if(desejaEntraNoSite == 'S' || desejaEntraNoSite == 's'){
-					funcao.tituloTabela(); //Maic
+					tituloTabela(); //Maic
 					for(contador = 0 ; contador < 10 ; contador++){
 						System.out.print("\n\t♥     "+codProduto[contador]+" \t♥\t"+ produto[contador]+"\t♥\t"+ preco[contador]+"\t   ♥\t  "+estoque[contador]+"\t   ♥");
 					}//for
-					funcao.linhaTabela();
+					linhaTabela(); //Maic
 	//Fim VINICIUS 
 	//Início ANA 
 						do {
@@ -75,11 +73,11 @@ package POO;
 									//Caso cliente deseja escolher outro produto que não esteja no carrinho
 									if(continua == 'S') {
 										auxQuant = 0;
-										funcao.tituloTabela(); //Maic									
+										tituloTabela(); //Maic									
 										for(contador = 0;contador < 10;contador++) {
 											System.out.print("\t♥     "+codProduto[contador]+" \t♥\t"+ produto[contador]+"\t♥\t"+ preco[contador]+"\t   ♥\t  "+estoque[contador]+"\t   ♥\n");
 										}
-										funcao.linhaTabela();
+										linhaTabela(); //Maic
 										System.out.print("\nSelecione o código do produto : ");
 										auxCod = ler.next().toUpperCase();
 										contador = 0;
@@ -123,13 +121,13 @@ package POO;
 					 			for (contador = 0; contador < 10; contador++) {
 					 				if (auxCod.equals(codProduto[contador])) {
 					 				carrinhoCompras[contador] = auxQuant;
-					 				funcao.tituloCarrinho(); //Maic
+					 				tituloCarrinho(); //Maic
 					 					for (contador = 0; contador < 10; contador++) {
 					 						if(carrinhoCompras[contador] != 0) {
 					 							System.out.print("♥     "+codProduto[contador]+" \t♥\t"+produto[contador]+"\t♥\t"+preco[contador]+"\t   ♥\t  "+carrinhoCompras[contador]+"\t♥\t"+(carrinhoCompras[contador]*preco[contador])+"\t    ♥\n");			
 					 						}
 					 					}
-					 				funcao.linhaCarrinho();
+					 					linhaCarrinho(); //Maic
 					 				}
 					 			}
 						 		//Após adicionar o produto no carrinho, é perguntado novamente
@@ -138,40 +136,33 @@ package POO;
 						 			continua = ler.next().toUpperCase().charAt(0);
 						 		}while(continua != 'S' && continua != 'N');
 						 		
-						 		funcao.tituloTabela(); //Maic
+						 		tituloTabela(); //Maic
 						 		for (contador = 0 ; contador < 10 ; contador++) {
 						 			if (continua == 'S') {
 					 				System.out.print("\n\t♥     "+codProduto[contador]+" \t♥\t"+produto[contador]+"\t♥\t"+preco[contador]+"\t   ♥\t  "+estoque[contador]+"\t   ♥");
 						 			}
 						 		}
-					 		funcao.linhaTabela();
+						 		linhaTabela(); //Maic	
 						}while (continua == 'S');
 	//Fim HENRIQUE 
 	//Início GIOVANNA 
 						//Compra finalizada - Carrinho final 
-						funcao.tituloCarrinho(); //Maic
+						tituloCarrinho(); //Maic
 						for (contador = 0; contador < 10; contador++) {
 							if (carrinhoCompras[contador] != 0) {
 								System.out.printf("♥     "+codProduto[contador]+" \t♥\t"+produto[contador]+"\t♥\t"+preco[contador]+"\t   ♥\t  "+carrinhoCompras[contador]+"\t♥\t"+(carrinhoCompras[contador] * preco[contador])+"\t    ♥\n");
 								total += carrinhoCompras[contador] * preco[contador];
 							}
 						}
-						funcao.linhaCarrinho();
-						System.out.printf("\nVALOR DA COMPRA : %.2f",total);
-						System.out.println("\n\nFORMAS DE PAGAMENTO : ");
-						System.out.println("Opção [1] - Dinheiro á vista c/ 10% de desconto");
-						System.out.println("Opção [2] - Cartão á vista c/ 10% de acréscimo");
-						System.out.println("Opção [3] - Cartão em 2x c/ 15% de acréscimo");
+						linhaCarrinho(); //Maic
+						opcoesPagamento();
 						System.out.print("\nDigite a opção de pagamento : ");
 						opcao = ler.nextInt();
-						funcao.tituloNota();
+						tituloNota(); //Maic					
 						//Opções de Pagamento
 						while (opcao >3 || opcao <=0) {
 							System.out.println("Opção inválida, escolha novamente: ");
-							System.out.println("\n\nFORMAS DE PAGAMENTO : ");
-							System.out.println("Opção [1] - Dinheiro á vista c/ 10% de desconto");
-							System.out.println("Opção [2] - Cartão á vista c/ 10% de acréscimo");
-							System.out.println("Opção [3] - Cartão em 2x c/ 15% de acréscimo");
+							opcoesPagamento();
 							System.out.print("\nDigite a opção de pagamento : ");
 							opcao = ler.nextInt();
 						}					
@@ -187,7 +178,7 @@ package POO;
 							System.out.println("10% de desconto : R$ "+df.format(total * 0.1));
 							System.out.println("\nTOTAL DA COMPRA R$ "+df.format(total * 0.9)+"\n");
 							System.out.print("\n\t\t\t\t\tData de emissão : "+formatterData.format(agora)+"\t    Hora : "+formatterHora.format(agora));
-							funcao.linhaNota();
+							linhaNota(); //Maic
 						}
 						//Opção 2 - à vista cartão
 						if (opcao == 2) {
@@ -201,7 +192,7 @@ package POO;
 							System.out.println("10% de acréscimo : R$ "+df.format(total * 0.1));
 							System.out.println("\nTOTAL DA COMPRA R$ "+df.format(total * 1.1)+"\n");
 							System.out.print("\n\t\t\t\t\tData de emissão : "+formatterData.format(agora)+"\t    Hora : "+formatterHora.format(agora));
-							funcao.linhaNota();
+							linhaNota(); //Maic
 						}	
 						//Opção 3 - em 2X no cartão
 						else if (opcao == 3) {
@@ -216,7 +207,7 @@ package POO;
 							System.out.println("Valor da parcela : R$ "+df.format((total * 1.15)/2)+"\n");
 							System.out.println("\nTOTAL DA COMPRA R$ " +df.format(total * 1.15)+"\n");
 							System.out.print("\n\t\t\t\t\tData de emissão : "+formatterData.format(agora)+"\t    Hora : "+formatterHora.format(agora));
-							funcao.linhaNota();
+							linhaNota(); //Maic
 						}					
 						//Zerando carrinho para nova compra
 						auxQuant=0;				
@@ -242,6 +233,5 @@ package POO;
 			}while (desejaVoltarParaSite == 'S');
 			System.out.println("Agradecemos a visita ♥\nVolte Sempre !!!\n");
 		}//void main
-	//Fim GIOVANNA
+	}//Fim GIOVANNA
 	
-	}

@@ -277,11 +277,11 @@ package Projeto;
 		//Cabeçalho nota fiscal
 		public static void linhaNota (boolean forte){
 			if (forte){
-				System.out.println("======================================= NOTA FISCAL =========================================\n");
-				System.out.println("\nwww.devsaudavel.com.br || versão 2.0\n");
-				System.out.println("\t\t\t\t  *****DEV SAUDÁVEL*****\n");
+				System.out.println("======================================= NOTA FISCAL =========================================");
+				System.out.println("www.devsaudavel.com.br || versão 2.0\n");
+				System.out.println("\t\t\t\t  *****DEV SAUDÁVEL*****");
 				System.out.println("\t\t\t\t  Programando a sua saúde\n");
-				System.out.println("\n\n♥    CÓDIGO\t♥\t PRODUTO\t♥    VALOR (R$)    ♥    QTDD    ♥     TOTAL (R$)    ♥\n");
+				System.out.println("\n♥    CÓDIGO\t♥\t PRODUTO\t♥    VALOR (R$)    ♥    QTDD    ♥     TOTAL (R$)    ♥");
 			}
 			else {
 				System.out.println("\n=============================================================================================\n");
