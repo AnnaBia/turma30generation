@@ -3,18 +3,19 @@ package ClassDevSaudavel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.List;
-import java.util.Scanner;
+
+import Projeto.Produto;
+
+
 
 public class Teste extends Funcoes {
 
 	public static void main(String[] args) {
-		Scanner ler = new Scanner(System.in);
-		String auxCod;
-		int contador = 0;
-		int auxQuant = 0;
+		
+		
 
-		List<Produto> lista = new ArrayList<>();	
+		List<Produto> lista = new ArrayList<>();
+		List<Produto> carrinho = new ArrayList<>();
 		
 		lista.add(new Produto("G3-01","Glutamina",30.00,10));
 		lista.add(new Produto("G3-02","Vitamina C",15.00,10));
@@ -27,34 +28,8 @@ public class Teste extends Funcoes {
 		lista.add(new Produto("G3-09","BCAA CAPS",50.00,10));
 		lista.add(new Produto("G3-10","Corda P.",22.00,10));
 		
-		apresentaTabela(lista);
-
-			System.out.print("\nDigite o código do produto : ");
-			auxCod = ler.next().toUpperCase();
-		
-			for(contador = 0;contador < lista.size();contador++) {
-				if(lista.get(contador).getCodProduto().equals(auxCod)) {
-					
-					System.out.println("Código : "+ lista.get(contador).getCodProduto() + "\nProduto : "+ lista.get(contador).getProduto() +
-							"\nValor : "+ lista.get(contador).getPreco()+"\nEstoque : "+lista.get(contador).getEstoque());
-					
-					System.out.print("\nDigite a quantidade desejada : ");
-					auxQuant = ler.nextInt();
-					while (auxQuant<=0) {
-				 		System.out.print("Valor inválido, digite novamente: ");
-				 		auxQuant = ler.nextInt();
-				 	}
-					if (auxQuant > lista.get(contador).getEstoque()) {
-			 			while (auxQuant > lista.get(contador).getEstoque() && lista.get(contador).getEstoque() <= 0) {
-			 			System.out.print("\nDigite a quantidade mediante o estoque !");	
-			 			System.out.print("\n\nDigite a quantidade desejada : ");
-			 			auxQuant = ler.nextInt();
-			 			}
-	
-				}	
-			}	
-		}	
+		apresentaTabela(lista, carrinho);	
 	}
+
 }
-		
 

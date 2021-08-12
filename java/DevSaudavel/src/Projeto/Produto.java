@@ -1,5 +1,5 @@
 
-package ClassDevSaudavel;
+package Projeto;
 
 import java.util.List;
 import java.util.Scanner;
