@@ -3,10 +3,12 @@ package ClassDevSaudavel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.List;
+import java.util.Scanner;
 
 public class Teste extends Funcoes {
 
-//	public static void main(String[] args) {
+	public static void main(String[] args) {
 		Scanner ler = new Scanner(System.in);
 		String auxCod;
 		int contador = 0;
