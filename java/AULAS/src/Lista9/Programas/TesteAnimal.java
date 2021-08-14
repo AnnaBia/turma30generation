@@ -1,4 +1,8 @@
-package HerancaPolimorfismo;
+package Lista9.Programas;
+
+import Lista9.Classes.Cachorro;
+import Lista9.Classes.Cavalo;
+import Lista9.Classes.Preguica;
 
 public class TesteAnimal {
 	public static void main(String args[]) {

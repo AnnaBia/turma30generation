@@ -1,10 +1,9 @@
-package HerancaPolimorfismo;
+package Lista9.Classes;
 					//herança
 public class Preguica extends Animal {
 	//construtor
 	public Preguica(String nome, int idade) {
-		super(nome, idade);
-		
+		super(nome, idade);	
 	}
 	//metodo
 	public void movimento() {
@@ -13,5 +12,4 @@ public class Preguica extends Animal {
 	public void som() {
 		System.out.println("zzzzzZZZ");
 	}
-
 }
