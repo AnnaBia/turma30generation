@@ -39,7 +39,6 @@ public class Projeto extends FuncoesExtras {
 		char desejaComprar = ' ';
 		char desejaVoltarParaSite = ' ';
 		int pos = -1;
-		int x = 0;
 		char altera = ' ';
 		String produtoIgual = "";
 		int posicaoProdutoIgual = 0;
