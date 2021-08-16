@@ -8,40 +8,39 @@ import java.util.Scanner;
 
 import java.util.List;
 import java.util.Scanner;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Scanner;
-
-import java.util.List;
-import java.util.Scanner;
 
 public class Funcoes {
 //entra Site
 	public static boolean entraNosite() {
 		Scanner ler = new Scanner(System.in);
 		char entraSite;
-		System.out.println("www.devsaudavel.com.br\n");
-		System.out.println("\t\t\t\t*****DEV SAUDÁVEL*****");
-		System.out.println("\t\t\t\tProgramando a sua saúde");
-		System.out.print("Deseja entrar no site [S/N]: ");
+		
+		
+		System.out.print("www.devsaudavel.com.br\n");
+		System.out.print("***** DEV SAUDÁVEL: PROGRAMANDO SUA SAÚDE *****\n");
+		System.out.print("Deseja entrar no site [S] / [N]: ");
 		entraSite = ler.next().toUpperCase().charAt(0);
+		
 		if (entraSite == 'S') {
-			insereBanner ();
 			return true;
 		} else {
-			System.out.print("Agradecemos a visita Volte Sempre !!!\n");
+			System.out.print("Obrigado pela visita!!\n");
 			return false;
 		}	
+		
 	}
-// banner
+	// banner
 	public static void insereBanner () {
-		System.out.println("\t════════════════════════════════════════════════════════════════════════════");
-		System.out.println("\t♥\t\t\t    TABELA DE PRODUTOS\t\t\t\t   ♥");
-		System.out.println("\t════════════════════════════════════════════════════════════════════════════ ");
-		System.out.println("\t♥    CÓDIGO\t♥\t PRODUTO\t♥    VALOR (R$)    ♥    ESTOQUE    ♥");
+		System.out.print("***** DEV SAUDÁVEL: PROGRAMANDO SUA SAÚDE *****\n\r");
+		System.out.print("---------------------------------------------------------\n");
+		System.out.print("                  RELAÇÕES DE PRODUTOS                  \n");
+		System.out.print("---------------------------------------------------------\n");
+		System.out.print("COD     VALOR R$      ESTOQUE            PRODUTO\n");
+		System.out.print("---------------------------------------------------------\n");
 	}
+
 	public static void apresentaTabela(List<Produto> lista, List<Produto> carrinho) {
+		Scanner ler = new Scanner(System.in);
 		DecimalFormat df = new DecimalFormat("#.00");//arredondamento do valor								
 		LocalDateTime agora = LocalDateTime.now();//data/hora atual
 		DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("dd/MM/uuuu");// formatar a data
@@ -51,69 +50,68 @@ public class Funcoes {
 		String auxCod;
 		int auxQuant = 0;
 		int pos=-1;
-		char op;
+		char op='s';
 		int opcaoCompra =0;
-		Scanner ler = new Scanner(System.in);
+		double auxTotal=0;
+		//inicio codigo
 		if(entraNosite()) {
 			do {
 				//tabela dos produtos
+				insereBanner ();
 				pos = -1;
 				for (Produto item : lista) {
-					System.out.println("\t♥     "+item.getCodProduto()+" \t♥\t"+item.getProduto()+"\t♥\t"+item.getPreco()+"\t   ♥\t  "+item.getEstoque()+"\t   ♥"+((item.getEstoque()>0)?" ":"\tPRODUTO INDISPONIVEL"));
+					System.out.println(item.getCodProduto()+"\t"+item.getPreco()+"\t\t"+item.getEstoque()+"\t\t"+item.getProduto()+((item.getEstoque()>0)?" ":"\tPRODUTO INDISPONIVEL"));
 				}
-				System.out.println("\n═════════════════════════════════════════════════════════════════════════════════════════════");
-				System.out.println("♥\t\t\t\t  CARRINHO DE COMPRAS\t\t\t\t\t    ♥");
-				System.out.println("\n♥    CÓDIGO\t♥\t PRODUTO\t♥    VALOR (R$)    ♥    QTDD    ♥     TOTAL (R$)    ♥");
+				System.out.println("\nCarrinho de compras");
+				System.out.println("COD\tVALOR\tESTOQUE\tPRODUTO\n");
 				for (Produto escolhido : carrinho) {
-					System.out.println("♥     "+escolhido.getCodProduto()+" \t♥\t"+escolhido.getProduto()+"\t♥\t"+escolhido.getPreco()+"\t   ♥\t  "+escolhido.getEstoque()+"\t♥\t"+(escolhido.getEstoque()*escolhido.getPreco()));
+					System.out.println(escolhido.getCodProduto()+"\t"+escolhido.getPreco()+"\t"+escolhido.getEstoque()+"\t"+escolhido.getProduto());
 				}
 				//escolher o produto
-				System.out.print("\nDigite o codigo: ");
+					System.out.print("Digite o codigo do produto: ");
 				auxCod = ler.next().toUpperCase();	
 				for (int x=0; x<lista.size(); x++ ) {
+					
 					if (lista.get(x).getCodProduto().equals(auxCod)) {
 						pos = x;
 						break;
 					}
+					
 				}
-				//Dados do produto escolhido
+				//Porduto escolhido e dados do mesmo
 				if (pos>=0) {
-					System.out.printf("\nDADOS DO PRODUTO");
-					System.out.printf("\n%s",lista.get(pos).getCodProduto());
-					System.out.printf("\n%s",lista.get(pos).getProduto());
-					System.out.printf("\n%.2f",lista.get(pos).getPreco());
-					System.out.printf("\n%d",lista.get(pos).getEstoque());
-					System.out.print("\n\nDigite a quantidade desejada: ");
+					System.out.println("Produto escolhido: \n");
+					System.out.println("\nCOD\tVALOR  ESTOQUE\t PRODUTO");
+					System.out.printf("%s\t%.2f\t%d\t%s\n",lista.get(pos).getCodProduto(),lista.get(pos).getPreco(),lista.get(pos).getEstoque(),lista.get(pos).getProduto());
+					System.out.print("\nQuantidade do Produto: ");
 					int auxQtde = ler.nextInt();
-					//Validações de quantidade do produto
+					//validações de quantidade do produto
 					if (auxQtde< 0) {
-						System.out.println("Valor inválido!");
+						System.out.println("Impossivel realizar, valor negativo!!!");
 					}
 					else if (auxQtde==0) {
-						System.out.println("Impossível realizar, nenhuma quantidade foi escolhida.");
+						System.out.println("Impossivel realizar, nenhuma quantidade foi escolhida.");
 					}
 					else if (lista.get(pos).getEstoque()==0){
-						System.out.println("Quantidade indisponível no estoque!");
+						System.out.println("Impossivel realizar, produto sem estoque!!!");
 					}
 					else if (lista.get(pos).getEstoque()< auxQtde) {
-						System.out.print("Quantidade indisponível no estoque!");
-					} 
-					else {
+						System.out.print("Impossivel realizar, quantidade maior que estoque!!");					
+					} else {
 						carrinho.add(new Produto(lista.get(pos).getCodProduto(),lista.get(pos).getProduto(),lista.get(pos).getPreco(),auxQtde));
 					}
 				}
-				else {
+					else {
 					System.out.println("Codigo informado não existe!!!");
-				}
+					}
 				//continua com a compra
-				System.out.print("\nContinua [S/N] ?:");
+				System.out.print("\n\nContinua SIM/NAO [S/N] :");
 				op = ler.next().toUpperCase().charAt(0);
-
-			} while (op=='S');//fechamento compra
-			System.out.println("\n═════════════════════════════════════════════════════════════════════════════════════════════");
-			System.out.println("♥\t\t\t\t  FECHAMENTO COMPRA\t\t\t\t\t    ♥");
-			System.out.println("\n♥    CÓDIGO\t♥\t PRODUTO\t♥    VALOR (R$)    ♥    QTDD    ♥     TOTAL (R$)    ♥");
-			double auxTotal=0;
+			} while (op=='S');
+			//fechamento compra
+			System.out.println("\n\nFechamento da Compra:");
+			System.out.println("COD\tVALOR  ESTOQUE\t PRODUTO");
+			
 			for (Produto escolhido : carrinho) {
 					for (int x=0; x<lista.size(); x++ ) {
 						
@@ -184,7 +182,7 @@ public class Funcoes {
 				System.out.println(item.getCodProduto()+"\t"+item.getPreco()+"\t\t"+item.getEstoque()+"\t\t"+item.getProduto());
 			}
 			System.out.println("---------------------------------------------------------");
-			System.out.println("\nOBRIGADO PELA VISITA, ESPERAMOS TE VER DE NOVAMENTE!!\n");
+			System.out.println("\nOBRIGADO PELA VISITA, ESPERAMOS TE VER NOVAMENTE!!\n");
 		}
 	}
 

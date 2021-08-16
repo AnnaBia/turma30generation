@@ -1,237 +1,259 @@
 package Aplicacao;
 
-	import java.time.LocalDateTime;
-	import java.time.format.DateTimeFormatter;
-	import java.util.Scanner;
-	import Entidades.FuncoesExtras;
-	import java.text.DecimalFormat;
+import java.time.LocalDateTime;
 
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+import java.text.DecimalFormat;
+import Entidades.FuncoesExtras;
+import Entidades.Produtos;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-	public class Projeto extends FuncoesExtras{
-			/*
-			 * Projeto Ecommerce, loja de produtos saudáveis.
-			 * Programado por:
-			 * Ana Beatriz Yujra Espejo
-			 * Giovanna Siqueira Paiva dos Penedos
-			 * Henrique Uriel Lopes
-			 * Maicon Gomes Cerqueira
-			 * Vinicius Cardoso Siqueira Francisco
-			 */
-		public static void main(String[] args) {
-	//Início VINICIUS 			        
-			DecimalFormat df = new DecimalFormat("#.00");//arredondamento do valor								
-			LocalDateTime agora = LocalDateTime.now();//data/hora atual
-			DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("dd/MM/uuuu");// formatar a data
-			String dataFormatada = formatterData.format(agora);// formatar a hora
-			DateTimeFormatter formatterHora = DateTimeFormatter.ofPattern("HH:mm:ss");
-			String horaFormatada = formatterHora.format(agora);
-			Scanner ler = new Scanner(System.in);
-	     	String [] verificarRepeticao = {"","","","","","","","","",""}; //Auxilia na verificação de um código, se selicionado mais de uma vez numa compra
-			String [] codProduto = { "G3-1", "G3-2","G3-3","G3-4","G3-5","G3-6","G3-7","G3-8","G3-9","G3-10"};
-			String [] produto = { "Glutamina", "Vitamina C", "Regata Cav", "Tenis Sports", "Whey Prot", "Snacks Div", "C. Legging", "Camiseta", "BCAA CAPS", "Corda P."};
-			String zerarCarrinho = " ";
-			String auxCod = " ";
-			double [] preco = { 30.00, 15.00, 45.00, 100.00, 75.00, 12.00, 80.00, 24.00, 42.00, 20.00 };
-			double total = 0.0;			
-			int[] estoque = new int[10];  
-			int[] carrinhoCompras = new int[10];
-			int contador = 0;
-			int opcao = 0;
-			int auxQuant = 0;
-			char continua = ' ';
-			char desejaEntraNoSite = ' ';
-			char desejaVoltarParaSite = ' ';
-			
-			//Limita o estoque do produto até 10
-			for(contador = 0 ; contador < 10 ; contador++){
-				estoque[contador] = 10;	
-			}
-			//Entrada para o site
-			do{
-				insereBanner();
-				do{
-					System.out.print("\nDeseja entrar no site [S/N] ? : ");
-					desejaEntraNoSite = ler.next().toUpperCase().charAt(0);
-				}while(desejaEntraNoSite != 'S' && desejaEntraNoSite != 'N');
-				//Tabela de código, produtos, preços e estoque
-				if(desejaEntraNoSite == 'S' || desejaEntraNoSite == 's'){
-					tituloTabela(); //Maic
-					for(contador = 0 ; contador < 10 ; contador++){
-						System.out.print("\n\t♥     "+codProduto[contador]+" \t♥\t"+ produto[contador]+"\t♥\t"+ preco[contador]+"\t   ♥\t  "+estoque[contador]+"\t   ♥");
-					}//for
-					linhaTabela(); //Maic
-	//Fim VINICIUS 
-	//Início ANA 
-						do {
-							System.out.print("\n\nSelecione o código do produto : ");
-							auxCod = ler.next().toUpperCase();
-							//Se o produto selecionado estiver no carrinho, é perguntado se deseja modificá-lo
-							for(contador = 0; contador < 10;contador++) {
-								if(auxCod.equals(verificarRepeticao[contador])) {
-									System.out.print("\nVocê já selecionou este produto, deseja escolher outro [S/N] ? ");
-									continua = ler.next().toUpperCase().charAt(0);
-									//Caso cliente deseja escolher outro produto que não esteja no carrinho
-									if(continua == 'S') {
-										auxQuant = 0;
-										tituloTabela(); //Maic									
-										for(contador = 0;contador < 10;contador++) {
-											System.out.print("\t♥     "+codProduto[contador]+" \t♥\t"+ produto[contador]+"\t♥\t"+ preco[contador]+"\t   ♥\t  "+estoque[contador]+"\t   ♥\n");
-										}
-										linhaTabela(); //Maic
-										System.out.print("\nSelecione o código do produto : ");
-										auxCod = ler.next().toUpperCase();
-										contador = 0;
-										while(auxCod.equalsIgnoreCase(codProduto[contador])){
-											contador++;
-										}
-									}//Caso deseja modificar o produto existente no carrinho
-										
-								}
-	//Fim ANA 
-	//Início HENRIQUE 
-								//Quantidade desejada do produto
-								if (auxCod.equals(codProduto[contador])) {
-							 		verificarRepeticao[contador] = codProduto[contador];
-							 		System.out.print("Código : "+codProduto[contador]+"\nProduto : "+produto[contador]+"\nValor : "+preco[contador]+"\nEstoque : "+estoque[contador]);
-							 		System.out.print("\n\nDigite a quantidade desejada : ");
-							 		auxQuant = ler.nextInt();
-							 		//Caso a quantidade seja negativa ou 0.
-							 		while (auxQuant<=0) {
-							 		System.out.print("Valor inválido, digite novamente: ");
-							 		auxQuant = ler.nextInt();
-							 		}
-							 		//Quantidade inexistente no estoque
-							 		if (auxQuant > estoque[contador] && estoque[contador] == 0) {
-							 			System.out.print("Produto em falta! Digite ' 0 'para prosseguir ");
-							 			while (auxQuant > estoque[contador]) {
-							 			auxQuant = ler.nextInt();	
-							 			}
-							 		}
-							 		else if (auxQuant > estoque[contador]) {
-							 			while (auxQuant > estoque[contador] && estoque[contador] <= 0) {
-							 			System.out.print("\nDigite a quantidade mediante o estoque !");	
-							 			System.out.print("\n\nDigite a quantidade desejada : ");
-							 			auxQuant = ler.nextInt();
-							 			}
-							 		}
-							 		break;	 				
-							 	}
-							} 
-								//Carrinho durante a compra
-					 			for (contador = 0; contador < 10; contador++) {
-					 				if (auxCod.equals(codProduto[contador])) {
-					 				carrinhoCompras[contador] = auxQuant;
-					 				tituloCarrinho(); //Maic
-					 					for (contador = 0; contador < 10; contador++) {
-					 						if(carrinhoCompras[contador] != 0) {
-					 							System.out.print("♥     "+codProduto[contador]+" \t♥\t"+produto[contador]+"\t♥\t"+preco[contador]+"\t   ♥\t  "+carrinhoCompras[contador]+"\t♥\t"+(carrinhoCompras[contador]*preco[contador])+"\t    ♥\n");			
-					 						}
-					 					}
-					 					linhaCarrinho(); //Maic
-					 				}
-					 			}
-						 		//Após adicionar o produto no carrinho, é perguntado novamente
-						 		do{
-						 			System.out.print("\nDeseja continuar a compra [S/N] ?: ");
-						 			continua = ler.next().toUpperCase().charAt(0);
-						 		}while(continua != 'S' && continua != 'N');
-						 		
-						 		tituloTabela(); //Maic
-						 		for (contador = 0 ; contador < 10 ; contador++) {
-						 			if (continua == 'S') {
-					 				System.out.print("\n\t♥     "+codProduto[contador]+" \t♥\t"+produto[contador]+"\t♥\t"+preco[contador]+"\t   ♥\t  "+estoque[contador]+"\t   ♥");
-						 			}
-						 		}
-						 		linhaTabela(); //Maic	
-						}while (continua == 'S');
-	//Fim HENRIQUE 
-	//Início GIOVANNA 
-						//Compra finalizada - Carrinho final 
-						tituloCarrinho(); //Maic
-						for (contador = 0; contador < 10; contador++) {
-							if (carrinhoCompras[contador] != 0) {
-								System.out.printf("♥     "+codProduto[contador]+" \t♥\t"+produto[contador]+"\t♥\t"+preco[contador]+"\t   ♥\t  "+carrinhoCompras[contador]+"\t♥\t"+(carrinhoCompras[contador] * preco[contador])+"\t    ♥\n");
-								total += carrinhoCompras[contador] * preco[contador];
-							}
-						}
-						linhaCarrinho(); //Maic
-						opcoesPagamento();
-						System.out.print("\nDigite a opção de pagamento : ");
-						opcao = ler.nextInt();
-						tituloNota(); //Maic					
-						//Opções de Pagamento
-						while (opcao >3 || opcao <=0) {
-							System.out.println("Opção inválida, escolha novamente: ");
-							opcoesPagamento();
-							System.out.print("\nDigite a opção de pagamento : ");
-							opcao = ler.nextInt();
-						}					
-						//Opção 1 - à vista
-						if (opcao == 1) {
-							for (contador = 0; contador < 10; contador++) {
-								if (carrinhoCompras[contador] != 0) {
-									System.out.println("♥     "+codProduto[contador]+" \t♥\t"+produto[contador]+"\t♥\t"+preco[contador]+"\t   ♥\t  "+carrinhoCompras[contador]+"\t♥\t"+carrinhoCompras[contador] * preco[contador]+"\t    ♥");
-								}
-							}
-							System.out.println("\n\nDinheiro à vista");
-							System.out.println("9% de ICMS : R$ "+df.format(total * 0.09));
-							System.out.println("10% de desconto : R$ "+df.format(total * 0.1));
-							System.out.println("\nTOTAL DA COMPRA R$ "+df.format(total * 0.9)+"\n");
-							System.out.print("\n\t\t\t\t\tData de emissão : "+formatterData.format(agora)+"\t    Hora : "+formatterHora.format(agora));
-							linhaNota(); //Maic
-						}
-						//Opção 2 - à vista cartão
-						if (opcao == 2) {
-							for (contador = 0; contador < 10; contador++) {
-								if (carrinhoCompras[contador] != 0) {
-									System.out.println("♥     "+codProduto[contador]+" \t♥\t"+produto[contador]+"\t♥\t"+preco[contador]+"\t   ♥\t  "+carrinhoCompras[contador]+"\t♥\t"+carrinhoCompras[contador] * preco[contador]+"\t    ♥");
-								}
-							}
-							System.out.println("\n\nCartão à vista");
-							System.out.println("9% de ICMS : R$ "+df.format(total * 0.09));
-							System.out.println("10% de acréscimo : R$ "+df.format(total * 0.1));
-							System.out.println("\nTOTAL DA COMPRA R$ "+df.format(total * 1.1)+"\n");
-							System.out.print("\n\t\t\t\t\tData de emissão : "+formatterData.format(agora)+"\t    Hora : "+formatterHora.format(agora));
-							linhaNota(); //Maic
-						}	
-						//Opção 3 - em 2X no cartão
-						else if (opcao == 3) {
-							for (contador = 0; contador < 10; contador++) {
-								if (carrinhoCompras[contador] != 0) {
-									System.out.println("♥     "+codProduto[contador]+" \t♥\t"+produto[contador]+"\t♥\t"+preco[contador]+"\t   ♥\t  "+carrinhoCompras[contador]+"\t♥\t"+carrinhoCompras[contador] * preco[contador]+"\t    ♥");
-								}
-							}
-							System.out.println("\n\n2X no Cartão");
-							System.out.println("9% de ICMS : R$ "+df.format(total * 0.09));
-							System.out.println("15% de acréscimo : R$ "+df.format(total * 0.15));
-							System.out.println("Valor da parcela : R$ "+df.format((total * 1.15)/2)+"\n");
-							System.out.println("\nTOTAL DA COMPRA R$ " +df.format(total * 1.15)+"\n");
-							System.out.print("\n\t\t\t\t\tData de emissão : "+formatterData.format(agora)+"\t    Hora : "+formatterHora.format(agora));
-							linhaNota(); //Maic
-						}					
-						//Zerando carrinho para nova compra
-						auxQuant=0;				
-						contador=0;
-						for (contador = 0; contador < 10; contador++) {
-							verificarRepeticao[contador] = " ";
-						}
-						for (contador = 0; contador < 10; contador++) {
-							estoque[contador] -= carrinhoCompras[contador];
-						}
-						for (contador = 0; contador < 10; contador++) {
-							carrinhoCompras[contador] = 0;		
-							total = 0.0;
+public class Projeto extends FuncoesExtras {
+	/*
+		PROJETO E-COMMERCE - LOJA DE PRODUTOS SAUDAVEIS 
+		PROGRAMADO POR : 
+		ANA BEATRIZ YUJRA ESPEJO
+		GIOVANNA SIQUEIRA PAIVA DOS PENEDOS 
+		HENRIQUE URIEL LOPES 
+		MAICON GOMES CERQUEIRA 
+		VINICIUS CARDOSO SIQUEIRA FRANCISCO
+	 */
+	public static void main(String[] args) {
+		DecimalFormat df = new DecimalFormat("#.00");// ARREDONDA VALOR
+		LocalDateTime agora = LocalDateTime.now();// DATA/HORA ATUAL
+		DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("dd/MM/uuuu");// FORMATA DATA
+		String dataFormatada = formatterData.format(agora);
+		DateTimeFormatter formatterHora = DateTimeFormatter.ofPattern("HH:mm:ss");// FORMATA HORA
+		String horaFormatada = formatterHora.format(agora);
+
+		// VARIÁVEIS
+		Scanner ler = new Scanner(System.in);
+		String auxCod = " ";
+		double total = 0.0;
+		int opcao = 0;
+		int auxQuant = 0;
+		char continua = ' ';
+		char desejaComprar = ' ';
+		char desejaVoltarParaSite = ' ';
+		int pos = -1;
+		int x = 0;
+		char altera = ' ';
+		String produtoIgual = "";
+		int posicaoProdutoIgual = 0;
+		
+		List<Produtos> lista = new ArrayList<>();
+		List<Produtos> carrinho = new ArrayList<>();
+
+		lista.add(new Produtos("G3-1", "Glutamina", 30.00, 10));
+		lista.add(new Produtos("G3-2", "Vitamina C", 15.00, 10));
+		lista.add(new Produtos("G3-3", "Regata Cav", 45.00, 10));
+		lista.add(new Produtos("G3-4", "Tenis Sports", 100.00, 10));
+		lista.add(new Produtos("G3-5", "Whey Prot", 75.00, 10));
+		lista.add(new Produtos("G3-6", "Snacks Div", 10.00, 10));
+		lista.add(new Produtos("G3-7", "C.Legging", 80.00, 10));
+		lista.add(new Produtos("G3-8", "Camiseta", 25.00, 10));
+		lista.add(new Produtos("G3-9", "BCAA CAPS", 50.00, 10));
+		lista.add(new Produtos("G3-10", "Corda P.", 22.00, 10));
+
+		// INÍCIO LOOP PROGRAMA
+		do {
+			// TELA INICIAL
+			insereBanner();
+			// VALIDA ENTRADA
+			do {
+				System.out.print("\nDeseja fazer uma compra [S/N] ? : ");
+				desejaComprar = ler.next().toUpperCase().charAt(0);
+			} while (desejaComprar != 'S' && desejaComprar != 'N');
+			// APRESENTAÇÃO TABELA PRODUTOS
+			if (desejaComprar == 'S') {
+				tituloTabela();
+				for (Produtos item : lista) {
+					System.out.print("\n\t♥     " + item.getCodProduto() + " \t♥\t" + item.getProduto() + " \t♥\t"
+							+ item.getPreco() + "\t   ♥\t  " + item.getEstoque() + "\t   ♥");
+				}
+				linhaTabela();
+				// ESCOLHE PRODUTO
+				do {// INICIO LAÇO COMPRA
+					System.out.print("\nSelecione o código do produto : ");
+					auxCod = ler.next().toUpperCase();
+					for (int contador = 0; contador < lista.size(); contador++) {
+						if (lista.get(contador).getCodProduto().equals(auxCod)) {
+							pos = contador;
+							break;
 						}
 					}
-				else {
-					break;
-				}
-				do{
+					// VERIFICA A REPETIÇÃO DE PRODUTO NA MESMA COMPRA
+					for (int i = 0; i < carrinho.size(); i++) {
+						if (carrinho.get(i).getCodProduto().equals(auxCod)) {
+							produtoIgual = carrinho.get(i).getCodProduto();
+							posicaoProdutoIgual = carrinho.indexOf(carrinho.get(i));	
+						}
+					}
+					// TESTE DO PRODUTO REPETIDO
+					if (produtoIgual.equals(auxCod)) {
+						System.out.print("Você já selecionou este código, deseja alterá-lo [S/N] ?");
+						altera = ler.next().toUpperCase().charAt(0);
+						if (altera == 'S') {
+							// DADOS DO PRODUTO ESCOLHIDO
+							System.out.println("CÓDIGO : " + lista.get(pos).getCodProduto());
+							System.out.println("PRODUTO : " + lista.get(pos).getProduto());
+							System.out.println("VALOR : " + lista.get(pos).getPreco());
+							System.out.println("ESTOQUE : " + lista.get(pos).getEstoque());
+							System.out.print("\nInforme a nova quantidade : ");
+							auxQuant = ler.nextInt();
+							// VALIDAÇÕES DE QUANTIDADE DO PRODUTO SELECIONADO
+							if (auxQuant < 0) {
+								System.out.println("Impossível realizar, valor negativo!!!");
+							} else if (auxQuant == 0) {
+								System.out.println("Impossível realizar, nenhuma quantidade foi escolhida.");
+							} else if (lista.get(pos).getEstoque() == 0) {
+								System.out.println("Impossível realizar, produto sem estoque!!!");
+							} else if (lista.get(pos).getEstoque() < auxQuant) {
+								System.out.print("Impossível realizar, quantidade maior que estoque!!");
+							} else {
+								//ATUALIZA e EXIBE CARRINHO
+							carrinho.get(posicaoProdutoIgual).setEstoque(auxQuant);
+							tituloCarrinho();
+							for (Produtos escolhido : carrinho) {
+								System.out.print("♥     " + escolhido.getCodProduto() + " \t♥\t"
+										+ escolhido.getProduto() + "\t♥\t" + escolhido.getPreco() + "\t   ♥\t  "
+										+ escolhido.getEstoque() + "\t♥\t"
+										+ escolhido.getEstoque() * escolhido.getPreco() + "\t    ♥\n");
+							}
+							linhaCarrinho();
+							}
+						}
+						//CASO O PRODUTO NÃO TENHA SIDO SELECIONADO MAIS DE UMA VEZ, ELE VEM DIRETO PARA CÁ
+					} else if (pos >= 0) {
+						// DADOS DO PRODUTO ESCOLHIDO
+						System.out.println("CÓDIGO : " + lista.get(pos).getCodProduto());
+						System.out.println("PRODUTO : " + lista.get(pos).getProduto());
+						System.out.println("VALOR : " + lista.get(pos).getPreco());
+						System.out.println("ESTOQUE : " + lista.get(pos).getEstoque());
+						System.out.print("\nDigite a quantidade desejada : ");
+						auxQuant = ler .nextInt();
+						// VALIDAÇÕES DE QUANTIDADE DO PRODUTO SELECIONADO
+						if (auxQuant < 0) {
+							System.out.println("Impossível realizar, valor negativo!!!");
+						} else if (auxQuant == 0) {
+							System.out.println("Impossível realizar, nenhuma quantidade foi escolhida.");
+						} else if (lista.get(pos).getEstoque() == 0) {
+							System.out.println("Impossível realizar, produto sem estoque!!!");
+						} else if (lista.get(pos).getEstoque() < auxQuant) {
+							System.out.print("Impossível realizar, quantidade maior que estoque!!");
+						} else {
+							//ATUALIZA e EXIBE CARRINHO
+							carrinho.add(new Produtos(lista.get(pos).getCodProduto(), lista.get(pos).getProduto(),
+									lista.get(pos).getPreco(), auxQuant));
+							tituloCarrinho();
+							for (Produtos escolhido : carrinho) {
+								System.out.print("♥     " + escolhido.getCodProduto() + " \t♥\t"
+										+ escolhido.getProduto() + "\t♥\t" + escolhido.getPreco() + "\t   ♥\t  "
+										+ escolhido.getEstoque() + "\t♥\t"
+										+ escolhido.getEstoque() * escolhido.getPreco() + "\t    ♥\n");
+							}
+							linhaCarrinho();
+						}
+					}else {
+						System.out.println("Codigo informado não existe!!!");
+					}
+					// PERGUNTA PARA PROSSEGUIR COM A COMPRA
 					System.out.print("\nDeseja continuar a compra [S/N] ?: ");
-					desejaVoltarParaSite = ler.next().toUpperCase().charAt(0);	
-		 		}while(continua != 'S' && continua != 'N');
-			}while (desejaVoltarParaSite == 'S');
-			System.out.println("Agradecemos a visita ♥\nVolte Sempre !!!\n");
-		}//void main
-	}//Fim GIOVANNA
-	
+					continua = ler.next().toUpperCase().charAt(0);
+				} while (continua == 'S');// FIM DO LAÇO COMPRA
+				// EXIBIÇÃO DO CARRINHO FINAL e ATUALIZA ESTOQUE
+				tituloCarrinhoFinal();
+				for (Produtos escolhido : carrinho) {
+					System.out.print("♥     " + escolhido.getCodProduto() + " \t♥\t" + escolhido.getProduto() + "\t♥\t"
+							+ escolhido.getPreco() + "\t   ♥\t  " + escolhido.getEstoque() + "\t♥\t"
+							+ escolhido.getEstoque() * escolhido.getPreco() + "\t    ♥\n");
+				}
+				linhaCarrinhoFinal();
+				// CÁLCULO DO CARRINHO FINAL
+				for (int i = 0; i < carrinho.size(); i++) {
+					pos = i;
+					total += (carrinho.get(pos).getPreco() * carrinho.get(pos).getEstoque());
+				}
+				// OPÇÕES DE PAGAMENTO
+				opcoesPagamento();
+				System.out.print("\nDigite a opção de pagamento : ");
+				opcao = ler.nextInt();
+				System.out.print("\n");
+				tituloNota();
+				while (opcao > 3 || opcao <= 0) {
+					System.out.println("Opção inválida, escolha novamente ...");
+					opcoesPagamento();
+					System.out.print("\nDigite a opção de pagamento : ");
+					opcao = ler.nextInt();
+				}
+				// OPÇÃO 1 - À VISTA
+				if (opcao == 1) {
+					for (Produtos escolhido : carrinho) {
+						System.out.print("♥     " + escolhido.getCodProduto() + " \t♥\t" + escolhido.getProduto()
+								+ "\t♥\t" + escolhido.getPreco() + "\t   ♥\t  " + escolhido.getEstoque() + "\t♥\t"
+								+ escolhido.getEstoque() * escolhido.getPreco() + "\t    ♥\n");
+					}
+					System.out.println("\nDinheiro à vista");
+					System.out.println("9% de ICMS : R$ " + df.format(total * 0.09));
+					System.out.println("10% de desconto : R$ " + df.format(total * 0.1));
+					System.out.println("\nTOTAL DA COMPRA R$ " + df.format(total * 0.9));
+					System.out.print("\n\t\t\t\t\tData de emissão : " + formatterData.format(agora) + "\t    Hora : "
+							+ formatterHora.format(agora));
+					linhaNota();
+				}
+				// OPÇÃO 2 - À VISTA CARTÃO
+				if (opcao == 2) {
+					for (Produtos escolhido : carrinho) {
+						System.out.print("♥     " + escolhido.getCodProduto() + " \t♥\t" + escolhido.getProduto()
+								+ "\t♥\t" + escolhido.getPreco() + "\t   ♥\t  " + escolhido.getEstoque() + "\t♥\t"
+								+ escolhido.getEstoque() * escolhido.getPreco() + "\t    ♥\n");
+					}
+					System.out.println("\nCartão à vista");
+					System.out.println("9% de ICMS : R$ " + df.format(total * 0.09));
+					System.out.println("10% de acréscimo : R$ " + df.format(total * 0.1));
+					System.out.println("\nTOTAL DA COMPRA R$ " + df.format(total * 1.1));
+					System.out.print("\n\t\t\t\t\tData de emissão : " + formatterData.format(agora) + "\t    Hora : "
+							+ formatterHora.format(agora));
+					linhaNota();
+				}
+				// OPÇÃO 3 - 2X NO CARTÃO
+				else if (opcao == 3) {
+					for (Produtos escolhido : carrinho) {
+						System.out.print("♥     " + escolhido.getCodProduto() + " \t♥\t" + escolhido.getProduto()
+								+ "\t♥\t" + escolhido.getPreco() + "\t   ♥\t  " + escolhido.getEstoque() + "\t♥\t"
+								+ escolhido.getEstoque() * escolhido.getPreco() + "\t    ♥\n");
+					}
+					System.out.println("\n2X no Cartão");
+					System.out.println("9% de ICMS : R$ " + df.format(total * 0.09));
+					System.out.println("15% de acréscimo : R$ " + df.format(total * 0.15));
+					System.out.println("Valor da parcela : R$ " + df.format((total * 1.15) / 2));
+					System.out.println("\nTOTAL DA COMPRA R$ " + df.format(total * 1.15));
+					System.out.print("\n\t\t\t\t\tData de emissão : " + formatterData.format(agora) + "\t    Hora : "
+							+ formatterHora.format(agora));
+					linhaNota();
+				}
+				// ATUALIZA A LISTA DE PRODUTOS APÓS A COMPRA
+				for (int i = 0; i < carrinho.size(); i++) {
+					for (int j = 0; j < lista.size(); j++) {
+						if(lista.get(j).getCodProduto().equals(carrinho.get(i).getCodProduto())) {
+							lista.get(j).setEstoque(lista.get(j).getEstoque() - carrinho.get(i).getEstoque());
+						}
+					}
+				}
+				// ZERA CARRINHO
+				carrinho.clear();
+			} else {
+				break;
+			}
+			do {
+				System.out.print("Deseja voltar ao site [S/N] ?: ");
+				desejaVoltarParaSite = ler.next().toUpperCase().charAt(0);
+				System.out.println();
+			} while (continua != 'S' && continua != 'N');
+		} while (desejaVoltarParaSite == 'S');
+		System.out.println("Agradecemos a visita ♥\nVolte Sempre !!!\n");	
+	}
+}
