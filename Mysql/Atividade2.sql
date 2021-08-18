@@ -20,7 +20,7 @@ insert into tb_produtos(Código,Produto,Preço,Estoque) values("G-007","Monitor 
 insert into tb_produtos(Código,Produto,Preço,Estoque) values("G-008","Impressora",400.00,100);
 
 select * from tb_produtos where Preço > 500.00;
-select * from tb_produtos where Preço < 500.00
+select * from tb_produtos where Preço < 500.00;
 
 update tb_produtos set Código = "G-003", Produto = "Mouse s/fio", Preço = 100.00, Estoque = 80 where id = 3;
 
