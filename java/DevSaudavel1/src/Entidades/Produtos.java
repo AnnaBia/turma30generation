@@ -1,30 +1,31 @@
 package Entidades;
 
 public class Produtos {
-	//ATRIBUTOS 
+	// ATRIBUTOS
 	private String codProduto;
 	private String produto;
 	private double preco;
 	private int estoque;
-	//CONSTRUTORES
-	public Produtos (String codProduto, String produto, double preco, int estoque) {		
+
+	// CONSTRUTORES
+	public Produtos(String codProduto, String produto, double preco, int estoque) {
 		super();
 		this.codProduto = codProduto;
 		this.produto = produto;
 		this.preco = preco;
 		this.estoque = estoque;
 		if (estoque < 0) {
-            this.estoque = 0;
-        }
-        else {
-            this.estoque = estoque;
-        }
+			this.estoque = 0;
+		} else {
+			this.estoque = estoque;
+		}
 	}
-	//GETTERS AND SETTERS
+
+	// GETTERS AND SETTERS
 	public String getCodProduto() {
 		return codProduto;
 	}
-	
+
 	public void setCodProduto(String codProduto) {
 		this.codProduto = codProduto;
 	}
@@ -48,19 +49,21 @@ public class Produtos {
 	public void setEstoque(int estoque) {
 		this.estoque = estoque;
 	}
-	//MÉTODOS ESTOQUE
+
+	// MÉTODOS ESTOQUE
 	public void incluiEstoque(int quantidade) {
-        if (quantidade <= 0) {
-            System.out.println("Quantidade incorreta!!! Tente de novo!!!");
-        } else {
-            this.estoque = this.estoque + quantidade;
-        }
-    }
-    public void retiraEstoque(int quantidade) {
-        if (quantidade > estoque) {
-            System.out.println("Quantidade indisponivel");
-        } else {
-            this.estoque = this.estoque - quantidade;
-        }
-    }
+		if (quantidade <= 0) {
+			System.out.println("Quantidade incorreta!!! Tente de novo!!!");
+		} else {
+			this.estoque = this.estoque + quantidade;
+		}
+	}
+
+	public void retiraEstoque(int quantidade) {
+		if (quantidade > estoque) {
+			System.out.println("Quantidade indisponivel");
+		} else {
+			this.estoque = this.estoque - quantidade;
+		}
+	}
 }

@@ -27,8 +27,7 @@ public class DevSaudavel {
 		
 		// VETORES
 		String[] verificarRepeticao = { "", "", "", "", "", "", "", "", "", "" }; // VETOR PARA AUXILIAR O CARRINHO
-																					// CASO O CÓDIGO SELECIONADO
-																					// SE REPITA
+																		// CASO O CÓDIGO SELECIONADO SE REPITA
 		String[] codProduto = { "G3-1", "G3-2", "G3-3", "G3-4", "G3-5", "G3-6", "G3-7", "G3-8", "G3-9", "G3-10" };
 		String[] produto = { "Glutamina", "Vitamina C", "Regata Cav", "Tenis Sports", "Whey Prot", "Snacks Div",
 				"C. Legging", "Camiseta", "BCAA CAPS", "Corda P." };
