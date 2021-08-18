@@ -1,4 +1,4 @@
--- Create database db_ecommerce
+Create database db_ecommerce
 
 use db_ecommerce;
 	create table tb_produtos(
@@ -19,8 +19,8 @@ insert into tb_produtos(Código,Produto,Preço,Estoque) values("G-006","Adaptado
 insert into tb_produtos(Código,Produto,Preço,Estoque) values("G-007","Monitor c/suporte regulável",550.00,100);
 insert into tb_produtos(Código,Produto,Preço,Estoque) values("G-008","Impressora",400.00,100);
 
--- select * from tb_produtos where Preço > 500.00;
--- select * from tb_produtos where Preço < 500.00
+select * from tb_produtos where Preço > 500.00;
+select * from tb_produtos where Preço < 500.00
 
 update tb_produtos set Código = "G-003", Produto = "Mouse s/fio", Preço = 100.00, Estoque = 80 where id = 3;
 
