@@ -11,11 +11,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Projeto extends FuncoesExtras {
+public class Projeto extends FuncoesExtras{
 	/*
-	 * PROJETO E-COMMERCE - LOJA DE PRODUTOS SAUDAVEIS PROGRAMADO POR : ANA BEATRIZ
-	 * YUJRA ESPEJO GIOVANNA SIQUEIRA PAIVA DOS PENEDOS HENRIQUE URIEL LOPES MAICON
-	 * GOMES CERQUEIRA VINICIUS CARDOSO SIQUEIRA FRANCISCO
+		PROJETO E-COMMERCE - LOJA DE PRODUTOS SAUDAVEIS 
+		PROGRAMADO POR : 
+		ANA BEATRIZ YUJRA ESPEJO
+		GIOVANNA SIQUEIRA PAIVA DOS PENEDOS 
+		HENRIQUE URIEL LOPES 
+		MAICON GOMES CERQUEIRA 
+		VINICIUS CARDOSO SIQUEIRA FRANCISCO
 	 */
 	public static void main(String[] args) {
 		DecimalFormat df = new DecimalFormat("#.00");// ARREDONDA VALOR
@@ -38,7 +42,7 @@ public class Projeto extends FuncoesExtras {
 		char altera = ' ';
 		String produtoIgual = "";
 		int posicaoProdutoIgual = 0;
-
+		
 		List<Produtos> lista = new ArrayList<>();
 		List<Produtos> carrinho = new ArrayList<>();
 
@@ -62,17 +66,17 @@ public class Projeto extends FuncoesExtras {
 				System.out.print("\nDeseja fazer uma compra [S/N] ? : ");
 				desejaComprar = ler.next().toUpperCase().charAt(0);
 			} while (desejaComprar != 'S' && desejaComprar != 'N');
-
+			// APRESENTAÇÃO TABELA PRODUTOS
 			if (desejaComprar == 'S') {
-				// ESCOLHE PRODUTO
+				linhaTabela();
 				do {// INICIO LAÇO COMPRA
-					
-						tituloTabela();
-						for (Produtos item : lista) {
-							System.out.print("\n\t♥     " + item.getCodProduto() + " \t♥\t" + item.getProduto() + " \t♥\t"
-									+ item.getPreco() + "\t   ♥\t  " + item.getEstoque() + "\t   ♥");
-						}
-						linhaTabela();
+					tituloTabela();
+					for (Produtos item : lista) {
+						System.out.print("\n\t♥     " + item.getCodProduto() + " \t♥\t" + item.getProduto() + " \t♥\t"
+								+ item.getPreco() + "\t   ♥\t  " + item.getEstoque() + "\t   ♥");
+					}
+					linhaTabela();
+					// ESCOLHE PRODUTO
 					System.out.print("\nSelecione o código do produto : ");
 					auxCod = ler.next().toUpperCase();
 					for (int contador = 0; contador < lista.size(); contador++) {
@@ -85,7 +89,7 @@ public class Projeto extends FuncoesExtras {
 					for (int i = 0; i < carrinho.size(); i++) {
 						if (carrinho.get(i).getCodProduto().equals(auxCod)) {
 							produtoIgual = carrinho.get(i).getCodProduto();
-							posicaoProdutoIgual = carrinho.indexOf(carrinho.get(i));
+							posicaoProdutoIgual = carrinho.indexOf(carrinho.get(i));	
 						}
 					}
 					// TESTE DO PRODUTO REPETIDO
@@ -110,20 +114,19 @@ public class Projeto extends FuncoesExtras {
 							} else if (lista.get(pos).getEstoque() < auxQuant) {
 								System.out.print("Impossível realizar, quantidade maior que estoque!!");
 							} else {
-								// ATUALIZA e EXIBE CARRINHO
-								carrinho.get(posicaoProdutoIgual).setEstoque(auxQuant);
-								tituloCarrinho();
-								for (Produtos escolhido : carrinho) {
-									System.out.print("♥     " + escolhido.getCodProduto() + " \t♥\t"
-											+ escolhido.getProduto() + "\t♥\t" + escolhido.getPreco() + "\t   ♥\t  "
-											+ escolhido.getEstoque() + "\t♥\t"
-											+ escolhido.getEstoque() * escolhido.getPreco() + "\t    ♥\n");
-								}
-								linhaCarrinho();
+								//ATUALIZA e EXIBE CARRINHO
+							carrinho.get(posicaoProdutoIgual).setEstoque(auxQuant);
+							tituloCarrinho();
+							for (Produtos escolhido : carrinho) {
+								System.out.print("♥     " + escolhido.getCodProduto() + " \t♥\t"
+										+ escolhido.getProduto() + "\t♥\t" + escolhido.getPreco() + "\t   ♥\t  "
+										+ escolhido.getEstoque() + "\t♥\t"
+										+ escolhido.getEstoque() * escolhido.getPreco() + "\t    ♥\n");
+							}
+							linhaCarrinho();
 							}
 						}
-						// CASO O PRODUTO NÃO TENHA SIDO SELECIONADO MAIS DE UMA VEZ, ELE VEM DIRETO
-						// PARA CÁ
+						//CASO O PRODUTO NÃO TENHA SIDO SELECIONADO MAIS DE UMA VEZ, ELE VEM DIRETO PARA CÁ
 					} else if (pos >= 0) {
 						// DADOS DO PRODUTO ESCOLHIDO
 						System.out.println("CÓDIGO : " + lista.get(pos).getCodProduto());
@@ -131,7 +134,7 @@ public class Projeto extends FuncoesExtras {
 						System.out.println("VALOR : " + lista.get(pos).getPreco());
 						System.out.println("ESTOQUE : " + lista.get(pos).getEstoque());
 						System.out.print("\nDigite a quantidade desejada : ");
-						auxQuant = ler.nextInt();
+						auxQuant = ler .nextInt();
 						// VALIDAÇÕES DE QUANTIDADE DO PRODUTO SELECIONADO
 						if (auxQuant < 0) {
 							System.out.println("Impossível realizar, valor negativo!!!");
@@ -142,7 +145,7 @@ public class Projeto extends FuncoesExtras {
 						} else if (lista.get(pos).getEstoque() < auxQuant) {
 							System.out.print("Impossível realizar, quantidade maior que estoque!!");
 						} else {
-							// ATUALIZA e EXIBE CARRINHO
+							//ATUALIZA e EXIBE CARRINHO
 							carrinho.add(new Produtos(lista.get(pos).getCodProduto(), lista.get(pos).getProduto(),
 									lista.get(pos).getPreco(), auxQuant));
 							tituloCarrinho();
@@ -154,7 +157,7 @@ public class Projeto extends FuncoesExtras {
 							}
 							linhaCarrinho();
 						}
-					} else {
+					}else {
 						System.out.println("Codigo informado não existe!!!");
 					}
 					// PERGUNTA PARA PROSSEGUIR COM A COMPRA
@@ -235,22 +238,24 @@ public class Projeto extends FuncoesExtras {
 				// ATUALIZA A LISTA DE PRODUTOS APÓS A COMPRA
 				for (int i = 0; i < carrinho.size(); i++) {
 					for (int j = 0; j < lista.size(); j++) {
-						if (lista.get(j).getCodProduto().equals(carrinho.get(i).getCodProduto())) {
+						if(lista.get(j).getCodProduto().equals(carrinho.get(i).getCodProduto())) {
 							lista.get(j).setEstoque(lista.get(j).getEstoque() - carrinho.get(i).getEstoque());
 						}
 					}
 				}
 				// ZERA CARRINHO
 				carrinho.clear();
+				produtoIgual = " ";
 			} else {
 				break;
 			}
 			do {
+				
 				System.out.print("Deseja voltar ao site [S/N] ?: ");
 				desejaVoltarParaSite = ler.next().toUpperCase().charAt(0);
 				System.out.println();
 			} while (continua != 'S' && continua != 'N');
 		} while (desejaVoltarParaSite == 'S');
-		System.out.println("Agradecemos a visita ♥\nVolte Sempre !!!\n");
+		System.out.println("Agradecemos a visita ♥\nVolte Sempre !!!\n");	
 	}
 }
