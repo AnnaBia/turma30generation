@@ -68,7 +68,6 @@ public class Projeto extends FuncoesExtras{
 			} while (desejaComprar != 'S' && desejaComprar != 'N');
 			// APRESENTAÇÃO TABELA PRODUTOS
 			if (desejaComprar == 'S') {
-				linhaTabela();
 				do {// INICIO LAÇO COMPRA
 					tituloTabela();
 					for (Produtos item : lista) {
