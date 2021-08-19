@@ -62,16 +62,17 @@ public class Projeto extends FuncoesExtras {
 				System.out.print("\nDeseja fazer uma compra [S/N] ? : ");
 				desejaComprar = ler.next().toUpperCase().charAt(0);
 			} while (desejaComprar != 'S' && desejaComprar != 'N');
-			// APRESENTAÇÃO TABELA PRODUTOS
+
 			if (desejaComprar == 'S') {
-				tituloTabela();
-				for (Produtos item : lista) {
-					System.out.print("\n\t♥     " + item.getCodProduto() + " \t♥\t" + item.getProduto() + " \t♥\t"
-							+ item.getPreco() + "\t   ♥\t  " + item.getEstoque() + "\t   ♥");
-				}
-				linhaTabela();
 				// ESCOLHE PRODUTO
 				do {// INICIO LAÇO COMPRA
+					
+						tituloTabela();
+						for (Produtos item : lista) {
+							System.out.print("\n\t♥     " + item.getCodProduto() + " \t♥\t" + item.getProduto() + " \t♥\t"
+									+ item.getPreco() + "\t   ♥\t  " + item.getEstoque() + "\t   ♥");
+						}
+						linhaTabela();
 					System.out.print("\nSelecione o código do produto : ");
 					auxCod = ler.next().toUpperCase();
 					for (int contador = 0; contador < lista.size(); contador++) {
