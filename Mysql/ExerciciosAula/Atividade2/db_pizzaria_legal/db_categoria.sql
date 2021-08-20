@@ -6,17 +6,17 @@ use db_pizzaria_legal;
 
 -- cria tabela 
 create table tb_categoria(
-	ID_TIPO varchar(50) not null,
-    BROTINHO boolean,
+	ID_CATEGORIA bigint auto_increment,
+    TIPO varchar(20),
     PIZZA boolean,
-    PRIMARY KEY(ID_TIPO)
-);
+    PRIMARY KEY(ID_CATEGORIA)
+)
+engine=InnoDB;
 
 -- cria dados tabela
-insert into tb_categoria(ID_TIPO,BROTINHO,PIZZA) values ("SALGADA",true,true);
-insert into tb_categoria(ID_TIPO,BROTINHO,PIZZA) values ("DOCE",true,true);
-insert into tb_categoria(ID_TIPO,BROTINHO,PIZZA) values ("VEGANA",true,true);
+insert into tb_categoria(TIPO,PIZZA) values ("SALGADA",true);
+insert into tb_categoria(TIPO,PIZZA) values ("DOCE",true);
+insert into tb_categoria(TIPO,PIZZA) values ("VEGANA",true);
 
 -- apresenta tabela
 select * from tb_categoria;
-

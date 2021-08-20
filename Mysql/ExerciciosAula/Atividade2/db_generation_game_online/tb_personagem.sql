@@ -7,20 +7,21 @@ create table tb_personagem(
     NOME varchar(20) not null,
     ATAQUE decimal(5) not null,
     DEFESA decimal(5) not null,
-    ID_CLASSE varchar(2) not null,
+    ID_CLASSE bigint not null,
     PRIMARY KEY(ID_PERSONAGEM),
     FOREIGN KEY(ID_CLASSE) references tb_classe(ID_CLASSE)
-    );
+    )
+    engine=InnoDB;
 
 -- cria dados tabela
-    insert into tb_personagem (NOME,ATAQUE,DEFESA,ID_CLASSE) values("CAPITAO",300,500,"1ª");
-    insert into tb_personagem (NOME,ATAQUE,DEFESA,ID_CLASSE) values("INQUISIDOR",5000,3000,"4ª");
-    insert into tb_personagem (NOME,ATAQUE,DEFESA,ID_CLASSE) values("ERRANTE",2800,2000,"3ª");
-    insert into tb_personagem (NOME,ATAQUE,DEFESA,ID_CLASSE) values("ESPADACHIM",400,300,"1ª");
-    insert into tb_personagem (NOME,ATAQUE,DEFESA,ID_CLASSE) values("ALQUIMISTA",890,700,"2ª");
-    insert into tb_personagem (NOME,ATAQUE,DEFESA,ID_CLASSE) values("DEFENCSOR",2500,3000,"3ª");
-    insert into tb_personagem (NOME,ATAQUE,DEFESA,ID_CLASSE) values("CAVALEIRA",800,1000,"2ª");
-    insert into tb_personagem (NOME,ATAQUE,DEFESA,ID_CLASSE) values("EXECUTOR",3500,4000,"4ª");
+    insert into tb_personagem (NOME,ATAQUE,DEFESA,ID_CLASSE) values("CAPITAO",300,500,1);
+    insert into tb_personagem (NOME,ATAQUE,DEFESA,ID_CLASSE) values("INQUISIDOR",5000,3000,4);
+    insert into tb_personagem (NOME,ATAQUE,DEFESA,ID_CLASSE) values("ERRANTE",2800,2000,3);
+    insert into tb_personagem (NOME,ATAQUE,DEFESA,ID_CLASSE) values("ESPADACHIM",400,300,1);
+    insert into tb_personagem (NOME,ATAQUE,DEFESA,ID_CLASSE) values("ALQUIMISTA",890,700,2);
+    insert into tb_personagem (NOME,ATAQUE,DEFESA,ID_CLASSE) values("DEFENCSOR",2500,3000,3);
+    insert into tb_personagem (NOME,ATAQUE,DEFESA,ID_CLASSE) values("CAVALEIRA",800,1000,2);
+    insert into tb_personagem (NOME,ATAQUE,DEFESA,ID_CLASSE) values("EXECUTOR",3500,4000,4);
 
 -- apresenta tabela
 select * from tb_personagem
@@ -42,7 +43,5 @@ select * from tb_personagem
     select tb_personagem.NOME, tb_personagem.ATAQUE, tb_personagem.DEFESA, tb_personagem.ID_CLASSE
 	from tb_personagem 
 	inner join tb_classe on tb_classe.ID_CLASSE = tb_personagem. ID_CLASSE
-	where tb_personagem.ID_CLASSE = "4ª"
+	where tb_personagem.ID_CLASSE = 4
 	
-    
-
