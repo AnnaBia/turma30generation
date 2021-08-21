@@ -39,7 +39,7 @@ select * from tb_produto where CURSO like "%C%";
 select * from tb_produto
 inner join tb_categoria on tb_categoria.ID_CATEGORIA = tb_produto. ID_CATEGORIA
   
--- Inner Join entre tb_categoria e tb_produto selecionando apenas dados 'fixadores'
+-- Inner Join entre tb_categoria e tb_produto selecionando apenas dados 'programação'
 select tb_produto.CURSO, tb_produto.NÍVEL, tb_produto.PREÇO_SEMESTRAL, tb_produto.ID_CATEGORIA
 from tb_produto
 inner join tb_categoria on tb_categoria.ID_CATEGORIA = tb_produto. ID_CATEGORIA
