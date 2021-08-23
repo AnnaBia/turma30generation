@@ -8,11 +8,11 @@
 		<version>2.5.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.Atividade1</groupId>
-	<artifactId>ExerciciosAula</artifactId>
+	<groupId>com.Atividades</groupId>
+	<artifactId>SPRING</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ExerciciosAula</name>
-	<description>ex1</description>
+	<name>SPRING</name>
+	<description>Exercicios Aula</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

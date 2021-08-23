@@ -1,13 +1,13 @@
-package com.Atividade1.ExerciciosAula;
+package com.Atividades.SPRING;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ExerciciosAulaApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ExerciciosAulaApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }
