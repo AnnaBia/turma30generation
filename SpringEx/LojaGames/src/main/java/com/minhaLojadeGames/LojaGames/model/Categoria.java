@@ -1,4 +1,4 @@
-package com.minhaLojadeGames.LojaGames.model;
+ package com.minhaLojadeGames.LojaGames.model;
 
 import java.util.List;
 

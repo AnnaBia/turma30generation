@@ -1,22 +1,22 @@
 package com.minhaFarmacia.Farmacia.model;
 
-import java.util.List;
+import java.math.BigDecimal;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "tb_categoria")
-public class Categoria {
+@Table(name = "tb_produto")
+public class Produto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -25,13 +25,12 @@ public class Categoria {
 	@Size(min = 5, max = 50)
 	private String nome;
 
-	@NotBlank
-	@Size(min = 1, max = 255)
-	private String descricao;
+	@Min(0)
+	private BigDecimal preco;
 
-	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("categoria")
-	private List<Produto> produto;
+	@ManyToOne
+	@JsonIgnoreProperties("produto")
+	private Categoria categoria;
 
 	public long getId() {
 		return id;
@@ -49,19 +48,20 @@ public class Categoria {
 		this.nome = nome;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public BigDecimal getPreco() {
+		return preco;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
 	}
 
-	public List<Produto> getProduto() {
-		return produto;
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
-	public void setProduto(List<Produto> produto) {
-		this.produto = produto;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
+
 }
