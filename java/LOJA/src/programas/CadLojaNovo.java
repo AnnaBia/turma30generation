@@ -2,10 +2,12 @@ package programas;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class CadLojaNovo {
 
 	public static void main(String[] args) {
+		Scanner leia = new Scanner(System.in);
 		//ex Lista de nomes
 		//não é possivel usar uma "List" de novo, pois é uma interface
 		List<String> cadastro = new ArrayList<>();
@@ -20,7 +22,7 @@ public class CadLojaNovo {
 		cadastro.add("CORINTHIANS");
 		cadastro.add("JUVENTS");
 		
-		System.out.println("Tamanho da lista : ") + cadastro.size());
+		System.out.println("Tamanho da lista : " + cadastro.size());
 		
 		
 		System.out.println(cadastro.get(4));

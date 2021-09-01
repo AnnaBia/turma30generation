@@ -1,10 +1,7 @@
 package Entities;
 
 public class Terceiro extends Funcionario{
-	public Terceiro(String matricula, int horasTrabalhadas, double valorHora) {
-		super(matricula, horasTrabalhadas, valorHora);
-	}
-
+	
 	private double adicional;
 
 	public Terceiro(String matricula, int horasTrabalhadas, double valorHora, double adicional) {
@@ -19,8 +16,14 @@ public class Terceiro extends Funcionario{
 	public void setAdicional(double adicional) {
 		this.adicional = adicional;
 	}
-	@Override//é uma referencia a mae
+	@Override
+	public double salarioExtra() {
+		return adicional * 2;
+	}
+	
+	@Override
 	public double salario() {
 		return (valorHora*horasTrabalhadas)+adicional;
 	}
+	
 }

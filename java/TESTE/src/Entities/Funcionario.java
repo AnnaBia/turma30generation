@@ -38,4 +38,7 @@ public class Funcionario {
 	public double salario() {
 		return valorHora*horasTrabalhadas;
 	}
+	public double salarioExtra() {
+		return  500.00;
+	}
 }

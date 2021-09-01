@@ -15,7 +15,7 @@ public class Tarefa4 {
 				•	o número de pessoas nervosas com mais de 40 anos; 
 				•	o número de pessoas calmas com menos de 18 anos.
 			 */
-	
+	public static void main (String args[]) {
 			Scanner leia = new Scanner(System.in);
 			int idade=0;
 			char sexo;  //(1-feminino / 2-masculino / 3-Outros)

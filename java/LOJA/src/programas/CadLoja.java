@@ -8,7 +8,7 @@ public class CadLoja {
 	
 		Produto prod1 = new Produto("001","CAMISA");
 		Produto prod2 = new Produto("002","CALÇA",100.50,-1);
-			
+		
 		prod2.retiraEstoque(5);
 		prod1.incluiEstoque(-1);
 		System.out.println(prod1.getNome()+" qtde "+prod1.getEstoque());

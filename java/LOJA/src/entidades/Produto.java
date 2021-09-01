@@ -1,17 +1,17 @@
 package entidades;
-		//não é possivel instanciar a class no programa
-public abstract class Produto {
-	//atributos - é, tem, estar
+
+//não é possivel instanciar a class no programa
+public  class Produto {
+	// atributos - é, tem, estar
 	private String codigo;
 	private String nome;
 	private double valor;
 	private int estoque;
-	
-	
+
 	public Produto(String codigo, String nome) {
-	this.codigo = codigo;
-	this.nome = nome;
-		
+		this.codigo = codigo;
+		this.nome = nome;
+
 	}
 
 	public Produto(String codigo, String nome, double valor, int estoque) {
@@ -21,8 +21,7 @@ public abstract class Produto {
 		this.valor = valor;
 		if (estoque < 0) {
 			this.estoque = 0;
-		}
-		else {
+		} else {
 			this.estoque = estoque;
 		}
 	}
@@ -32,7 +31,7 @@ public abstract class Produto {
 		this.codigo = codigo;
 	}
 
-	//ENCAPSULAMENTO - METODO
+	// ENCAPSULAMENTO - METODO
 	public String getCodigo() {
 		return codigo;
 	}
@@ -61,22 +60,19 @@ public abstract class Produto {
 		return estoque;
 	}
 	/*
-	public void setEstoque(int estoque) {
-		this.estoque = estoque;
-	}
-	*/
+	 * public void setEstoque(int estoque) { this.estoque = estoque; }
+	 */
 
-	
-	//METODOS
+	// METODOS
 	public void incluiEstoque(int quantidade) {
 		if (quantidade <= 0) {
 			System.out.println("Quantidade incorreta!!! Tente de novo!!!");
 		} else {
 			this.estoque = this.estoque + quantidade;
 		}
-		
+
 	}
-	
+
 	public void retiraEstoque(int quantidade) {
 		if (quantidade > estoque) {
 			System.out.println("Quantidade indisponivel");
@@ -85,7 +81,3 @@ public abstract class Produto {
 		}
 	}
 }
-
-	
-	
-	
