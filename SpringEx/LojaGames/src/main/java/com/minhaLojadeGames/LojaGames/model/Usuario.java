@@ -1,11 +1,13 @@
-package org.generation.blogPessoal.model;
+package com.minhaLojadeGames.LojaGames.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+
+import javax.validation.constraints.NotBlank;
+
 import javax.validation.constraints.Size;
 
 @Entity // INFORMA QUE A MODEL É UMA ENTIDADE E QUE ELA VIRARÁ UMA TABELA NO BD
@@ -16,18 +18,18 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // INSERE AUTO-INCREMENTO
 	private long id;
 
-	@NotNull // NÃO ACEITA VALORES NULOS
-	@Size(min = 2, max = 100) // DEFINE A QTDD MIN E MAX DE CARACTERES
+	@NotBlank // NÃO ACEITA VALORES NULOS
+	@Size(min = 3, max = 50) // DEFINE A QTDD MIN E MAX DE CARACTERES
 	private String nome;
 
-	@NotNull
-	@Size(min = 5, max = 100)
+	@NotBlank
+	@Size(min = 5, max = 50)
 	private String usuario;
 
-	@NotNull
-	@Size(min = 5, max = 100)
+	@NotBlank
+	@Size(min = 6)
 	private String senha;
-	
+
 	// GETTERS AND SETTERS
 	public long getId() {
 		return id;

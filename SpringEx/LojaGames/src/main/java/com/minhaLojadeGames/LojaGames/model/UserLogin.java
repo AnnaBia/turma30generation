@@ -1,8 +1,8 @@
-package org.generation.blogPessoal.model;
+package com.minhaLojadeGames.LojaGames.model;
 
 //CLASSE RESPONSÁVEL POR ENVIAR UMA RESPOSTA QUANDO O USUÁRIO SE LOGAR, POR ISSO NÃO HAVERÁ @
 public class UserLogin {
-	// ATRIBUTOS  
+	// ATRIBUTOS
 	private String nome;
 	private String usuario;
 	private String senha;

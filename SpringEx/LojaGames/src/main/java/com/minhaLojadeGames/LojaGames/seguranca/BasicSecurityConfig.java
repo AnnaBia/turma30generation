@@ -1,6 +1,5 @@
-package org.generation.blogPessoal.seguranca;
+package com.minhaLojadeGames.LojaGames.seguranca;
 
-//CLASSE DE CONFIGURAÇÃO = DEFINI ALGUMAS CONFIG DE SEGURANÇA DO NOSSO PROJETO
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,12 +11,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@EnableWebSecurity //INDICA QUE A CLASSE SE TRATA DE UMA CLASSE DE CONFIG DE SEGURANÇA DO SPRING
+// CLASSE DE CONFIGURAÇÃO = DEFINI ALGUMAS CONFIG DE SEGURANÇA DO NOSSO PROJETO
+@EnableWebSecurity // INDICA QUE A CLASSE SE TRATA DE UMA CLASSE DE CONFIG DE SEGURANÇA DO SPRING
 public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService userDetailsService;
 
-	@Override
+	@Override													//TRATATIVA DE ERROS
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService);
 	}
@@ -27,15 +27,15 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 
+	// LIBERAR ENDPOINTS DENTRO DO CONTROLLER PARA QUE O CLIENT TENHA ACESSO SEM PASSAR UMA CHAVE TOKEN
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().
-		antMatchers("/usuarios/logar").permitAll()
-		.antMatchers("/usuarios/cadastrar").permitAll().
-		anyRequest().authenticated()
+		http.authorizeRequests()
+		.antMatchers("/usuarios/login").permitAll()
+		.antMatchers("/usuarios/cadastro").permitAll()
+		.anyRequest().authenticated()
 		.and().httpBasic()
-		.and().sessionManagement()
-		.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().cors()
 		.and().csrf().disable();
 	}
