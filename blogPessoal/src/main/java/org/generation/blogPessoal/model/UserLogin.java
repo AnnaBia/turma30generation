@@ -2,15 +2,24 @@ package org.generation.blogPessoal.model;
 
 //CLASSE RESPONSÁVEL POR ENVIAR UMA RESPOSTA QUANDO O USUÁRIO SE LOGAR, POR ISSO NÃO HAVERÁ @
 public class UserLogin {
-	// ATRIBUTOS  
+	// ATRIBUTOS
+	private long id;
 	private String nome;
 	private String usuario;
 	private String senha;
 	private String token;
 
 	// GETTERS AND SETTERS
+	public long getId() {
+		return id;
+	}
+
 	public String getNome() {
 		return nome;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public void setNome(String nome) {

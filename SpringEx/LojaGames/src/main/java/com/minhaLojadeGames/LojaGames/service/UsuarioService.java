@@ -12,7 +12,7 @@ import com.minhaLojadeGames.LojaGames.model.UserLogin;
 import com.minhaLojadeGames.LojaGames.model.Usuario;
 import com.minhaLojadeGames.LojaGames.repository.UsuarioRepository;
 
-// CLASSE RESPONSÁVEL POR IMPLEMENTAR UM SERVIÇO E CADASTRE OS NOSSOS USUÁRIOS DE ACORDO COM A CAMADA DE SEGURANÇA DA NOSSA API
+// CLASSE RESPONSÁVEL POR IMPLEMENTAR UM SERVIÇO E CADASTRE OS USUÁRIOS DE ACORDO COM A CAMADA DE SEGURANÇA DA API
 @Service
 public class UsuarioService {
 	// ATRIBUTOS
