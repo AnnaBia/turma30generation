@@ -1,5 +1,6 @@
 package org.generation.blogPessoal.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.generation.blogPessoal.model.Usuario;
@@ -9,5 +10,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	// BUSCAR DADOS PELO USUARIO SEM LEVAR EM CONSIDERAÇÃO LETRA MAIÚSCULA OU MINÚSCULA
 	public Optional<Usuario> findByUsuario(String usuario);
-//Optional=PORQUE OS VALORES PODEM VIR NULOS //findByUsuario=PROCURE PELO NOME DO USUARIO
+	
+	public List<Usuario> findAllByNomeContainingIgnoreCase(String nome);
+	
+	public Usuario findByNome(String nome);
 }

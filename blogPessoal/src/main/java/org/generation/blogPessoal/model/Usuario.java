@@ -33,8 +33,8 @@ public class Usuario {
 	@Size(min = 5, max = 100)
 	private String usuario;
 
-	@NotNull(message = "O atributo Senha é obrigatória!")
-	@Size(min = 5, max = 100, message = "A Senha deve ter no mínimo 8 caracteres")
+	@NotNull(message = "O atributo Senha é obrigatório!")
+	@Size(min = 7, max = 100, message = "A Senha deve ter no mínimo 7 caracteres")
 	private String senha;
 
 	@Column(name = "data_nascimento")
@@ -52,6 +52,10 @@ public class Usuario {
 		this.usuario = usuario;
 		this.senha = senha;
 		this.dataNascimento = dataNascimento;
+	}
+	
+	public Usuario() {
+		
 	}
 
 	// GETTERS AND SETTERS

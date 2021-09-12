@@ -26,19 +26,29 @@ public class UsuarioTest {
 
 	@Autowired
 	private ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+	Validator validator = factory.getValidator();
+
 	@BeforeEach
 	public void start() {
 		LocalDate data = LocalDate.parse("2000-07-22", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-		usuario = new Usuario(0L, "João da Silva", "joa@email.com.br", "13465278", data);
+		usuario = new Usuario(0L, "Ana Bia", "anaespejo@email.com", "1254917", data);
 	}
 
 	@Test
 	@DisplayName("✔ Valida Atributos Não Nulos")
 	void testValidaAtributos() {
-		Set<ConstraintViolation<Usuario>> violacao = Validator.validate(usuario);
+		Set<ConstraintViolation<Usuario>> violacao = validator.validate(usuario);
 		System.out.println(violacao.toString());
 		assertTrue(violacao.isEmpty());
 
+	}
+
+	@Test
+	@DisplayName("❌ Não Valida Atributos Nulo")
+	void testNaoValidaAtributos() {
+		Set<ConstraintViolation<Usuario>> violacao = validator.validate(usuarioErro);
+		System.out.println(violacao.toString());
+		assertTrue(violacao.isEmpty());
 	}
 
 }
