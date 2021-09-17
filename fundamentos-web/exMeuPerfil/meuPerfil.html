@@ -6,10 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Perfil</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
 
 <body>
-    <ul>
+    <ul id="menu">
         <li>
             <a href="meuPerfil.html">Home</a>
         </li>
@@ -17,25 +19,63 @@
             <a href="contato.html">Contato</a>
         </li>
     </ul>
-    <h1>Sobre Ana Bia</h1>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque nihil alias aliquid. Ratione exercitationem
-        cupiditate architecto sed quod aut quidem, unde obcaecati natus fugit doloremque culpa eius delectus, debitis
-        omnis?
-    </p>
-    <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos necessitatibus inventore ducimus soluta
-        veritatis ad at temporibus ullam repellendus ratione natus, totam unde iure libero voluptates maiores sapiente
-        molestias magnam?
-    </p>
-    <img src="assets/img/Ana.png" alt="Minha foto" width="250" height="320">
+    <h1 class="center">Sobre Ana Bia</h1>
+    <div class="container" >
+        <div>
+            <img class="br-50 p-30" src="assets/img/Ana.png" alt="Minha foto" width="250" height="320">
+        </div>
+        <div class="p-30">
+            <p style="font-size: 20px;">
+                <!--CSS INLINE, especificações direto na tag -->
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi, ipsa!
+            </p>
+            <p class="justify">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas tempora aspernatur accusantium
+                reprehenderit architecto debitis illum qui cupiditate neque asperiores aliquid assumenda sit illo
+                tempore vero repellat, itaque maiores ducimus iure eveniet beatae? Enim, porro perspiciatis placeat
+                officia molestias ad praesentium illo maxime, sequi at id nihil deleniti earum repudiandae.
+            </p>
+            <p class="justify">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias facere earum nam. Dignissimos
+                suscipit a pariatur tempora nam amet quia quaerat quo error exercitationem repellendus fugit animi
+                asperiores, ea possimus perferendis praesentium architecto minima qui obcaecati? Voluptatibus neque
+                reiciendis, ea quas ipsam suscipit at minus explicabo sunt deleniti, dolorum molestias.
+            </p>
+            <p class="justify">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta blanditiis nemo sunt consectetur. Vero
+                laboriosam neque ipsam nostrum alias! Repellendus cum aspernatur hic dolorum et voluptates sunt magnam
+                soluta voluptatem omnis laborum deleniti vitae natus blanditiis facilis tenetur magni enim, ipsa sint
+                incidunt, quidem delectus quas nihil! Sapiente, voluptates omnis.
+            </p>
+        </div>
+    </div>
+
 </body>
 
-<h2>Minha música Disney predileta : </h2>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0nlAsbF6XAA" title="YouTube video player"
-    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-</iframe>
+<h2 class="center">Minha música Disney predileta : </h2>
+<div class="container mb-50">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/0nlAsbF6XAA" title="YouTube video player"
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+<hr>
+<div class="container">
+    <a href="https://www.linkedin.com/" target="_blank">
+        <img class="tm-social" src="assets/img/linkedin.png" alt="Logo do Linkedin">
+    </a>
+    <a href="https://www.instagram.com/" target="_blank">
+        <img class="tm-social" src="assets/img/instagram.png" alt="Logo do Instagram">
+    </a>
+    <a href="https://www.facebook.com/" target="_blank">
+        <img class="tm-social" src="assets/img/facebook.png" alt="Logo do Facebook">
+    </a>
+</div>
+<footer>
+    <p class="center">
+        Todos os direitos reservador: Ana Bia&copy;
+    </p>
+</footer>
 </body>
 
 </html>
